@@ -251,28 +251,49 @@ THE SOFTWARE.
 #define CC_LUA_ENGINE_DEBUG 0
 #endif
 
+#ifndef CC_USE_SPINE
+#define CC_USE_SPINE 0
+#endif
+
 /** Use physics integration API. */
 #ifndef CC_USE_PHYSICS
-#define CC_USE_PHYSICS 1
+#define CC_USE_PHYSICS 0
+#endif
+
+/** Use 3D module integration API. */
+#ifndef CC_USE_3D_MODULE
+#define CC_USE_3D_MODULE 0
 #endif
 
 /** Use 3d physics integration API. */
+#if CC_USE_3D_MODULE
+
 #ifndef CC_USE_3D_PHYSICS
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-#define CC_USE_3D_PHYSICS 1
+#define CC_USE_3D_PHYSICS 0
 #endif
 #endif
 
 #if (CC_USE_3D_PHYSICS)
 /** Use bullet physics engine. */
 #ifndef CC_ENABLE_BULLET_INTEGRATION
-#define CC_ENABLE_BULLET_INTEGRATION 1
+#define CC_ENABLE_BULLET_INTEGRATION 0
 #endif
 #endif
 
+#endif
+
 /** Use 3D navigation API */
+#if CC_USE_3D_MODULE
 #ifndef CC_USE_NAVMESH
-#define CC_USE_NAVMESH 1
+#define CC_USE_NAVMESH 0
+#endif
+#endif
+
+#if CC_USE_3D_MODULE
+#ifndef CC_USE_PARTICLE_UNIVERSE
+#define CC_USE_PARTICLE_UNIVERSE 0;
+#endif // !CC_USE_3D_PARTICLE
 #endif
 
 /** Use culling or not. */
@@ -317,6 +338,18 @@ THE SOFTWARE.
 #endif
 #endif // CC_USE_WIC
 
+#ifndef CC_WEB_SOCKET
+#define CC_WEB_SOCKET 0
+#endif
+
+#ifndef CC_SOCKET_IO
+#if CC_WEB_SOCKET
+#define CC_SOCKET_IO 0
+#else
+#define CC_SOCKET_IO 0
+#endif
+#endif
+
 /** Enable Script binding. */
 #ifndef CC_ENABLE_SCRIPT_BINDING
 #define CC_ENABLE_SCRIPT_BINDING 1
@@ -331,7 +364,7 @@ THE SOFTWARE.
  */
 #ifdef CC_ENABLE_SCRIPT_BINDING
   #ifndef CC_ENABLE_GC_FOR_NATIVE_OBJECTS
-  #define CC_ENABLE_GC_FOR_NATIVE_OBJECTS 0
+  #define CC_ENABLE_GC_FOR_NATIVE_OBJECTS 1
   #endif
 #endif
 
@@ -404,5 +437,8 @@ THE SOFTWARE.
 #ifndef CC_STRIP_FPS
 #define CC_STRIP_FPS 0
 #endif
+#ifndef CC_ENABLE_VR
+#define CC_ENABLE_VR 0
+#endif //CC_ENABLE_VR
 
 #endif // __CCCONFIG_H__

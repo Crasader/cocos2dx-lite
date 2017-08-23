@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCAnimate3D.h"
 #include "3d/CCSprite3D.h"
 #include "3d/CCSkeleton3D.h"
@@ -531,3 +531,4 @@ void Animate3D::removeFromMap()
 }
 
 NS_CC_END
+#endif

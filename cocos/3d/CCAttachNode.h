@@ -24,7 +24,7 @@
 
 #ifndef __CCATTACHNODE_H__
 #define __CCATTACHNODE_H__
-
+#if CC_USE_3D_MODULE
 #include "math/CCMath.h"
 #include "2d/CCNode.h"
 
@@ -72,4 +72,5 @@ protected:
 /// @}
 
 NS_CC_END
+#endif
 #endif // __CCATTACHNODE_H__

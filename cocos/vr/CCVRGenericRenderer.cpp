@@ -21,6 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+#if CC_ENABLE_VR
 
 #include "platform/CCPlatformMacros.h"
 #include "vr/CCVRGenericRenderer.h"
@@ -224,3 +225,4 @@ void VRGenericRenderer::setupGLProgram()
 }
 
 NS_CC_END
+#endif //CC_ENABLE_VR

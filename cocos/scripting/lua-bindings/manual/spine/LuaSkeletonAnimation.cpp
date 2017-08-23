@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_SPINE
 #include "scripting/lua-bindings/manual/spine/LuaSkeletonAnimation.h"
 
 #include "scripting/lua-bindings/manual/cocos2d/LuaScriptHandlerMgr.h"
@@ -52,3 +52,4 @@ LuaSkeletonAnimation* LuaSkeletonAnimation::createWithFile (const char* skeleton
 	node->autorelease();
 	return node;
 }
+#endif

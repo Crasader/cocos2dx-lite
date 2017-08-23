@@ -287,7 +287,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         if (Build.VERSION.SDK_INT >= 19) {
             // use reflection to remove dependence of API level
 
-            Class viewClass = View.class;
+            Class<View> viewClass = View.class;
 
             try {
                 final int SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION = Cocos2dxReflectionHelper.<Integer>getConstantValue(viewClass, "SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION");
@@ -335,8 +335,10 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     {
         private int[] mConfigAttributes;
         private  final int EGL_OPENGL_ES2_BIT = 0x04;
-        private  final int EGL_OPENGL_ES3_BIT = 0x40;
-        public Cocos2dxEGLConfigChooser(int redSize, int greenSize, int blueSize, int alphaSize, int depthSize, int stencilSize)
+        @SuppressWarnings("unused")
+		private  final int EGL_OPENGL_ES3_BIT = 0x40;
+        @SuppressWarnings("unused")
+		public Cocos2dxEGLConfigChooser(int redSize, int greenSize, int blueSize, int alphaSize, int depthSize, int stencilSize)
         {
             mConfigAttributes = new int[] {redSize, greenSize, blueSize, alphaSize, depthSize, stencilSize};
         }

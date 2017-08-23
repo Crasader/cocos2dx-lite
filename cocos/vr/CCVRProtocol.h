@@ -24,7 +24,7 @@
 
 #ifndef __CC_VR_PROTOCOL_H__
 #define __CC_VR_PROTOCOL_H__
-
+#if CC_ENABLE_VR
 #include <string>
 
 #include "base/ccTypes.h"
@@ -60,5 +60,5 @@ public:
 
 
 NS_CC_END
-
+#endif //CC_ENABLE_VR
 #endif // __CC_VR_PROTOCOL_H__

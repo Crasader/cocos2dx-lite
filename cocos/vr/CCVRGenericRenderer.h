@@ -25,6 +25,8 @@
 #ifndef CCVRGenericRenderer_hpp
 #define CCVRGenericRenderer_hpp
 
+#if CC_ENABLE_VR
+
 #include "vr/CCVRProtocol.h"
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCFrameBuffer.h"
@@ -80,5 +82,7 @@ protected:
 };
 
 NS_CC_END
+
+#endif //CC_ENABLE_VR
 
 #endif // CCVRGenericRenderer_hpp

@@ -34,6 +34,15 @@
 NS_CC_BEGIN
 
 std::vector<Controller*> Controller::s_allController;
+Controller::Controller()
+	:_impl(nullptr)
+{
+
+}
+
+Controller::~Controller()
+{
+}
 
 Controller* Controller::getControllerByTag(int tag)
 {

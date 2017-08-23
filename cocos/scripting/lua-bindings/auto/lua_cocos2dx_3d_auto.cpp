@@ -1,4 +1,6 @@
 #include "scripting/lua-bindings/auto/lua_cocos2dx_3d_auto.hpp"
+
+#if CC_USE_3D_MODULE
 #include "cocos2d.h"
 #include "3d/CCBundle3D.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
@@ -6761,8 +6763,11 @@ int lua_register_cocos2dx_3d_Bundle3D(lua_State* tolua_S)
     g_typeCast["Bundle3D"] = "cc.Bundle3D";
     return 1;
 }
+#endif
+
 TOLUA_API int register_all_cocos2dx_3d(lua_State* tolua_S)
 {
+#if CC_USE_3D_MODULE
 	tolua_open(tolua_S);
 	
 	tolua_module(tolua_S,"cc",0);
@@ -6783,6 +6788,7 @@ TOLUA_API int register_all_cocos2dx_3d(lua_State* tolua_S)
 	lua_register_cocos2dx_3d_Skybox(tolua_S);
 
 	tolua_endmodule(tolua_S);
+#endif
 	return 1;
 }
 

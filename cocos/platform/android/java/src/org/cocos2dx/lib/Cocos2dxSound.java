@@ -67,8 +67,8 @@ public class Cocos2dxSound {
     private ConcurrentHashMap<Integer, SoundInfoForLoadedCompleted> mPlayWhenLoadedEffects =
             new ConcurrentHashMap<Integer, SoundInfoForLoadedCompleted>();
 
-    private static final int MAX_SIMULTANEOUS_STREAMS_DEFAULT = 5;
-    private static final int MAX_SIMULTANEOUS_STREAMS_I9100 = 3;
+    private static final int MAX_SIMULTANEOUS_STREAMS_DEFAULT = 20;
+    private static final int MAX_SIMULTANEOUS_STREAMS_I9100 = 5;
     private static final float SOUND_RATE = 1.0f;
     private static final int SOUND_PRIORITY = 1;
     private static final int SOUND_QUALITY = 5;

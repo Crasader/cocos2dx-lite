@@ -58,10 +58,14 @@ namespace cocostudio
         
         ArmatureNodeReader::destroyInstance();
         Node3DReader::destroyInstance();
+#if CC_USE_3D_MODULE
         Sprite3DReader::destroyInstance();
+#endif
         UserCameraReader::destroyInstance();
+#if CC_USE_PARTICLE_UNIVERSE
         Particle3DReader::destroyInstance();
-        
+#endif
+
         cocos2d::CSLoader::destroyInstance();
         
         

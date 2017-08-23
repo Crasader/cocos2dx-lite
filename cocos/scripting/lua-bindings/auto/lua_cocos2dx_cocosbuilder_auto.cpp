@@ -1,5 +1,5 @@
 #include "scripting/lua-bindings/auto/lua_cocos2dx_cocosbuilder_auto.hpp"
-#include "editor-support/cocosbuilder/CocosBuilder.h"
+//#include "editor-support/cocosbuilder/CocosBuilder.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
 #include "scripting/lua-bindings/manual/LuaBasicConversions.h"
 

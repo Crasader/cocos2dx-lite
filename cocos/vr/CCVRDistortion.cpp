@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_ENABLE_VR
 #include "vr/CCVRDistortion.h"
 #include <math.h>
 
@@ -82,3 +82,4 @@ float Distortion::distortInverse(float radius)
 }
 
 NS_CC_END
+#endif //#if CC_ENABLE_VR

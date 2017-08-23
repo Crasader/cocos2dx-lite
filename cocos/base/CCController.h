@@ -193,8 +193,8 @@ public:
 private:
     static std::vector<Controller*> s_allController;
 
-    Controller();
-    virtual ~Controller();
+	Controller();
+	virtual ~Controller();
 
     void init();
 

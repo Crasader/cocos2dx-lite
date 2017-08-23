@@ -38,6 +38,7 @@ using namespace cocos2d::experimental::ui;
 @interface UIVideoViewWrapperIos : NSObject
 
 @property (strong,nonatomic) MPMoviePlayerController * moviePlayer;
+@property (strong,nonatomic) bool skipEnable;
 
 - (void) setFrame:(int) left :(int) top :(int) width :(int) height;
 - (void) setURL:(int) videoSource :(std::string&) videoUrl;
@@ -50,6 +51,8 @@ using namespace cocos2d::experimental::ui;
 - (void) setKeepRatioEnabled:(BOOL) enabled;
 - (void) setFullScreenEnabled:(BOOL) enabled;
 - (BOOL) isFullScreenEnabled;
+- (void) setSkipEnable:(BOOL) skip;
+- (BOOL) isSkipEnable;
 
 -(id) init:(void*) videoPlayer;
 
@@ -76,6 +79,7 @@ using namespace cocos2d::experimental::ui;
         self.moviePlayer = nullptr;
         _videoPlayer = (VideoPlayer*)videoPlayer;
         _keepRatioEnabled = false;
+        _skipEnable = false;
     }
 
     return self;
@@ -109,7 +113,7 @@ using namespace cocos2d::experimental::ui;
 -(void) setFullScreenEnabled:(BOOL) enabled
 {
     if (self.moviePlayer != nullptr) {
-        [self.moviePlayer setFullscreen:enabled animated:(true)];
+        [self.moviePlayer setFullscreen:enabled animated:(false)];
     }
 }
 
@@ -120,6 +124,16 @@ using namespace cocos2d::experimental::ui;
     }
 
     return false;
+}
+
+- (void) setSkipEnable:(BOOL) skip
+{
+    _skipEnable = skip;
+}
+
+- (BOOL) isSkipEnable
+{
+    return _skipEnable;
 }
 
 -(void) setURL:(int)videoSource :(std::string &)videoUrl
@@ -263,7 +277,8 @@ using namespace cocos2d::experimental::ui;
 //------------------------------------------------------------------------------------------------------------
 
 VideoPlayer::VideoPlayer()
-: _isPlaying(false)
+: _bSkipEnable(false)
+, _isPlaying(false)
 , _fullScreenDirty(false)
 , _fullScreenEnabled(false)
 , _keepAspectRatioEnabled(false)
@@ -400,6 +415,16 @@ void VideoPlayer::seekTo(float sec)
 bool VideoPlayer::isPlaying() const
 {
     return _isPlaying;
+}
+
+void VideoPlayer::setSkipEnable(bool bSkip)
+{
+    _bSkipEnable = bSkip;
+}
+
+bool VideoPlayer::isSkipEnable() const
+{
+    return _bSkipEnable;
 }
 
 void VideoPlayer::setVisible(bool visible)

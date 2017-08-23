@@ -107,7 +107,8 @@ void EditBoxImplCommon::initInactiveLabels(const Size& size)
 void EditBoxImplCommon::placeInactiveLabels(const Size& size)
 {
     _label->setDimensions(size.width, size.height);
-    
+	_labelPlaceHolder->setDimensions(size.width, size.height);
+
     auto placeholderSize = _labelPlaceHolder->getContentSize();
     
     if(_editBoxInputMode == EditBox::InputMode::ANY){
@@ -124,8 +125,9 @@ void EditBoxImplCommon::placeInactiveLabels(const Size& size)
         _label->setPosition(Vec2(CC_EDIT_BOX_PADDING, size.height));
         _label->setVerticalAlignment(TextVAlignment::CENTER);
         
-        _labelPlaceHolder->setPosition(Vec2(CC_EDIT_BOX_PADDING,
-                                            (size.height + placeholderSize.height) / 2));
+        //_labelPlaceHolder->setPosition(Vec2(CC_EDIT_BOX_PADDING,
+        //                                    (size.height + placeholderSize.height) / 2));
+		_labelPlaceHolder->setPosition(Vec2(CC_EDIT_BOX_PADDING, size.height));
         _labelPlaceHolder->setVerticalAlignment(TextVAlignment::CENTER);
     }
 }

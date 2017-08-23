@@ -273,6 +273,7 @@ public:
     /** Returns a new copy of the GLProgramState. The GLProgram is reused */
     GLProgramState* clone() const;
 
+	void releaseFromCache();
     /**
      Apply GLProgram, attributes and uniforms.
      @param modelView The applied modelView matrix to shader.

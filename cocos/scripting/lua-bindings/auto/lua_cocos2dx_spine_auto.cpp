@@ -1,4 +1,5 @@
 #include "scripting/lua-bindings/auto/lua_cocos2dx_spine_auto.hpp"
+#if CC_USE_SPINE
 #include "editor-support/spine/spine-cocos2dx.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
 #include "scripting/lua-bindings/manual/LuaBasicConversions.h"
@@ -2425,8 +2426,10 @@ int lua_register_cocos2dx_spine_SkeletonAnimation(lua_State* tolua_S)
     g_typeCast["SkeletonAnimation"] = "sp.SkeletonAnimation";
     return 1;
 }
+#endif
 TOLUA_API int register_all_cocos2dx_spine(lua_State* tolua_S)
 {
+#if CC_USE_SPINE
 	tolua_open(tolua_S);
 	
 	tolua_module(tolua_S,"sp",0);
@@ -2436,6 +2439,7 @@ TOLUA_API int register_all_cocos2dx_spine(lua_State* tolua_S)
 	lua_register_cocos2dx_spine_SkeletonAnimation(tolua_S);
 
 	tolua_endmodule(tolua_S);
+#endif
 	return 1;
 }
 

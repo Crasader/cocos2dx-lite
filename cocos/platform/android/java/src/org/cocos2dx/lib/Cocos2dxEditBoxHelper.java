@@ -25,7 +25,6 @@ THE SOFTWARE.
 package org.cocos2dx.lib;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Looper;
@@ -241,7 +240,7 @@ public class Cocos2dxEditBoxHelper {
                     if (!fontName.isEmpty()) {
                         if (fontName.endsWith(".ttf")) {
                             try {
-                                tf = Cocos2dxTypefaces.get(mCocos2dxActivity.getContext(), fontName);
+                                tf = Cocos2dxTypefaces.get(Cocos2dxActivity.getContext(), fontName);
                             } catch (final Exception e) {
                                 Log.e("Cocos2dxEditBoxHelper", "error to create ttf type face: "
                                         + fontName);
@@ -335,8 +334,8 @@ public class Cocos2dxEditBoxHelper {
                 if (editBox != null) {
                     editBox.setChangedTextProgrammatically(true);
                     editBox.setText(text);
-                    int position = text.length();
-                    editBox.setSelection(position);
+//                    int position = text.length();
+//                    editBox.setSelection(position);
                 }
             }
         });
@@ -421,7 +420,7 @@ public class Cocos2dxEditBoxHelper {
             return;
         }
 
-        final InputMethodManager imm = (InputMethodManager) mCocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) Cocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         Cocos2dxEditBox editBox = mEditBoxArray.get(index);
         if (null != editBox) {
             editBox.requestFocus();
@@ -437,7 +436,7 @@ public class Cocos2dxEditBoxHelper {
             return;
         }
         
-        final InputMethodManager imm = (InputMethodManager) mCocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) Cocos2dxActivity.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         Cocos2dxEditBox editBox = mEditBoxArray.get(index);
         if (null != editBox) {
             imm.hideSoftInputFromWindow(editBox.getWindowToken(), 0);

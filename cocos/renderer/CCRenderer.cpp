@@ -821,9 +821,10 @@ void Renderer::drawBatchedTriangles()
     {
         // Client Side Arrays
 #define kQuadSize sizeof(_verts[0])
+#define kIndexSize sizeof(_indices[0])
         glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
 
-        glBufferData(GL_ARRAY_BUFFER, sizeof(_verts[0]) * _filledVertex , _verts, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, kQuadSize * _filledVertex, _verts, GL_DYNAMIC_DRAW);
 
         GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POS_COLOR_TEX);
 
@@ -837,7 +838,7 @@ void Renderer::drawBatchedTriangles()
         glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_TEX_COORD, 2, GL_FLOAT, GL_FALSE, kQuadSize, (GLvoid*) offsetof(V3F_C4B_T2F, texCoords));
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffersVBO[1]);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(_indices[0]) * _filledIndex, _indices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, kIndexSize * _filledIndex, _indices, GL_STATIC_DRAW);
     }
 
     /************** 3: Draw *************/

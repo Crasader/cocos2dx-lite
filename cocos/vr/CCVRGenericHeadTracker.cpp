@@ -26,7 +26,7 @@
 // IMPORTANT
 // For iOS/Mac, this file is treated as an "Objective-C++" file.
 // To change this behaviour, use the File Inspector from Xcode
-
+#if CC_ENABLE_VR
 #include "vr/CCVRGenericHeadTracker.h"
 
 #include <cmath>
@@ -269,3 +269,4 @@ Mat4 VRGenericHeadTracker::getLocalRotation()
 }
 
 NS_CC_END
+#endif //CC_ENABLE_VR

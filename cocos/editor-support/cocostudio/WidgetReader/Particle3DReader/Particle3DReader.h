@@ -24,6 +24,7 @@
 
 #ifndef __cocos2d_libs__Particle3DReader__
 #define __cocos2d_libs__Particle3DReader__
+#if CC_USE_PARTICLE_UNIVERSE
 
 #include "editor-support/cocostudio/CocosStudioExport.h"
 #include "editor-support/cocostudio/WidgetReader/NodeReaderProtocol.h"
@@ -50,5 +51,5 @@ namespace cocostudio
         cocos2d::Node* createNodeWithFlatBuffers(const flatbuffers::Table* particle3DOptions);
     };
 }
-
+#endif
 #endif /* defined(__cocos2d_libs__Particle3DReader__) */

@@ -45,8 +45,10 @@ int register_network_module(lua_State* L)
 #endif
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+#if CC_WEB_SOCKET
         tolua_web_socket_open(L);
         register_web_socket_manual(L);
+#endif //CC_WEB_SOCKET
 #endif
         
         register_xml_http_request(L);

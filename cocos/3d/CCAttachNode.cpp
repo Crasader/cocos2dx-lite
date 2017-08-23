@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCAttachNode.h"
 #include "3d/CCSkeleton3D.h"
 
@@ -80,3 +80,4 @@ void AttachNode::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t
 }
 NS_CC_END
 
+#endif

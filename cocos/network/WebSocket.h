@@ -29,6 +29,8 @@
 
 #pragma once
 
+#if CC_WEB_SOCKET
+
 #include <string>
 #include <vector>
 #include <mutex>
@@ -276,6 +278,7 @@ private:
 
 NS_CC_END
 
+#endif //CC_WEB_SOCKET
 // end group
 /// @}
 

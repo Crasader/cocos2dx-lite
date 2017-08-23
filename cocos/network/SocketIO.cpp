@@ -26,7 +26,7 @@
 *using spec version 1 found at https://github.com/LearnBoost/socket.io-spec
 
  ****************************************************************************/
-
+#if CC_SOCKET_IO
 #include "network/SocketIO.h"
 #include "network/Uri.h"
 #include <algorithm>
@@ -1217,4 +1217,6 @@ void SocketIO::removeSocket(const std::string& uri)
 }
 
 NS_CC_END
+
+#endif //CC_SOCKET_IO
 

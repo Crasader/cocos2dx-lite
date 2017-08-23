@@ -47,6 +47,34 @@ THE SOFTWARE.
 
 namespace cocos2d
 {
+	//加密文件头部信息 Add By Y-way 2016-03-09
+	struct NSwfHeader 
+	{
+		unsigned sign;//文件头标志
+		unsigned offset;//文件偏移
+		unsigned fLen;//文件长度
+		unsigned res;//保留
+
+		NSwfHeader()
+			:sign(0)
+		{
+			sign = sign | 'F';
+			sign = (sign << 8) | 'W';
+			sign = (sign << 8) | 'S';
+			sign = (sign << 8) | 'N';
+		}
+
+		bool isSigned()
+		{
+			unsigned tmpSign = 0;
+			tmpSign = tmpSign | 'F';
+			tmpSign = (tmpSign << 8) | 'W';
+			tmpSign = (tmpSign << 8) | 'S';
+			tmpSign = (tmpSign << 8) | 'N';
+
+			return sign == tmpSign;
+		}
+	};
 #ifndef _unz64_H
 typedef struct unz_file_info_s unz_file_info;
 #endif

@@ -25,7 +25,7 @@
 
 #ifndef CCVRGenericHeadTracker_hpp
 #define CCVRGenericHeadTracker_hpp
-
+#if CC_ENABLE_VR
 #include "vr/CCVRProtocol.h"
 #include "math/Vec3.h"
 #include "math/Mat4.h"
@@ -54,5 +54,5 @@ protected:
 };
 
 NS_CC_END
-
+#endif //CC_ENABLE_VR
 #endif /* CCVRGenericHeadTracker_hpp */

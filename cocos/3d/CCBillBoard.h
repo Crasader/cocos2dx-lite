@@ -24,7 +24,7 @@
 
 #ifndef __CCBILLBOARD_H__
 #define __CCBILLBOARD_H__
-
+#if CC_USE_3D_MODULE
 #include "2d/CCSprite.h"
 
 NS_CC_BEGIN
@@ -134,5 +134,5 @@ private:
 
 NS_CC_END
 
-
+#endif
 #endif // __CCBILLBOARD_H__

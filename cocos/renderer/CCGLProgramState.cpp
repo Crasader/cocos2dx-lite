@@ -479,6 +479,15 @@ GLProgramState* GLProgramState::clone() const
     return glprogramstate;
 }
 
+void GLProgramState::releaseFromCache()
+{
+	release();
+	if (_glprogram != nullptr)
+	{
+		GLProgramStateCache::getInstance()->removeGLProgramState(_glprogram);
+	}
+}
+
 bool GLProgramState::init(GLProgram* glprogram)
 {
     CCASSERT(glprogram, "invalid shader");

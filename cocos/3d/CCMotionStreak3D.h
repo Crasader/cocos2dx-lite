@@ -23,7 +23,7 @@ THE SOFTWARE.
 ****************************************************************************/
 #ifndef __CC_MOTION_STREAK3D_H__
 #define __CC_MOTION_STREAK3D_H__
-
+#if CC_USE_3D_MODULE
 #include "base/CCProtocols.h"
 #include "2d/CCNode.h"
 #include "renderer/CCCustomCommand.h"
@@ -201,5 +201,5 @@ private:
 /// @}
 
 NS_CC_END
-
+#endif
 #endif //__CC_MOTION_STREAK3D_H__

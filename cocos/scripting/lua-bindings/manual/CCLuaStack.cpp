@@ -882,8 +882,24 @@ int LuaStack::luaLoadBuffer(lua_State *L, const char *chunk, int chunkSize, cons
     }
     else
     {
-        skipBOM(chunk, chunkSize);
-        r = luaL_loadbuffer(L, chunk, chunkSize, chunkName);
+        //处理加密文件 Add By Y-way 2016-04-22
+        const char* tmpChunk = chunk;
+        size_t chunkLen = chunkSize;
+        NSwfHeader nswfHeader;
+        memcpy((void*)(&nswfHeader), tmpChunk, sizeof(nswfHeader));
+        if (nswfHeader.isSigned())//已经加密
+        {
+            unsigned char* tmpData = (unsigned char*)(tmpChunk + nswfHeader.offset);
+            for (int i = 0; i < 16; i++)
+            {
+                *tmpData = ((*tmpData<< 0x04) | (*tmpData>> 0x04));
+                tmpData++;
+    }
+            chunkLen = nswfHeader.fLen;
+            tmpChunk = tmpChunk + nswfHeader.offset;
+        }
+        skipBOM(tmpChunk, (int&)chunkLen);
+        r = luaL_loadbuffer(L, tmpChunk, chunkLen, chunkName);
     }
 
 #if defined(COCOS2D_DEBUG) && COCOS2D_DEBUG > 0

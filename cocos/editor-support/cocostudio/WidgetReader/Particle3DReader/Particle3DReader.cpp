@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_PARTICLE_UNIVERSE
 #include "platform/CCFileUtils.h"
 #include "editor-support/cocostudio/WidgetReader/Particle3DReader/Particle3DReader.h"
 
@@ -164,3 +164,4 @@ namespace cocostudio
         return ret;
     }
 }
+#endif

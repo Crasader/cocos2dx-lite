@@ -22,6 +22,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 #include "scripting/lua-bindings/manual/spine/lua_cocos2dx_spine_manual.hpp"
+#if CC_USE_SPINE
 #include "scripting/lua-bindings/auto/lua_cocos2dx_spine_auto.hpp"
 
 #include "scripting/lua-bindings/manual/tolua_fix.h"
@@ -527,9 +528,10 @@ int register_all_cocos2dx_spine_manual(lua_State* L)
     
     return 0;
 }
-
+#endif
 int register_spine_module(lua_State* L)
 {
+#if CC_USE_SPINE
     lua_getglobal(L, "_G");
     if (lua_istable(L,-1))//stack:...,_G,
     {
@@ -537,6 +539,6 @@ int register_spine_module(lua_State* L)
         register_all_cocos2dx_spine_manual(L);
     }
     lua_pop(L, 1);
-
+#endif
     return 1;
 }

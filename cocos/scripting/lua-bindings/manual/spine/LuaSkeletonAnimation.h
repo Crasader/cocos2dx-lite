@@ -25,6 +25,7 @@
 
 #ifndef LUASKELETONANIMATION_H_
 #define LUASKELETONANIMATION_H_
+#if CC_USE_SPINE
 #include "editor-support/spine/spine-cocos2dx.h"
 
 /// @cond
@@ -37,4 +38,5 @@ public:
 	virtual ~LuaSkeletonAnimation();
 };
 /// @endcond
+#endif
 #endif /* LUASKELETONANIMATION_H_ */

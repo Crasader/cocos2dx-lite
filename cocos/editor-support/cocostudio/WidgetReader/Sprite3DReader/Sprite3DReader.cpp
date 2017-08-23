@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "2d/CCLight.h"
 #include "3d/CCSprite3D.h"
 #include "3d/CCAnimate3D.h"
@@ -277,3 +277,4 @@ namespace cocostudio
         return ret;
     }
 }
+#endif

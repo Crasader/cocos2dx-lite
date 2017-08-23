@@ -26,7 +26,6 @@ package org.cocos2dx.lib;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.os.Handler;
 import android.util.Log;
 
 import org.cocos2dx.enginedata.EngineDataManager;

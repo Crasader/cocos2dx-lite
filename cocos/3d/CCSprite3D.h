@@ -24,7 +24,7 @@
 
 #ifndef __CCSPRITE3D_H__
 #define __CCSPRITE3D_H__
-
+#if CC_USE_3D_MODULE
 #include <unordered_map>
 
 #include "base/CCVector.h"
@@ -344,4 +344,6 @@ protected:
 /// @}
 
 NS_CC_END
+
+#endif
 #endif // __SPRITE3D_H_

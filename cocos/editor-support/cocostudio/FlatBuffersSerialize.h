@@ -28,7 +28,7 @@
 #include <string>
 #include <vector>
 
-#include "ExtensionMacros.h"
+//#include "ExtensionMacros.h"
 #include "editor-support/cocostudio/CocosStudioExport.h"
 #include "platform/CCPlatformMacros.h"
 #include "ui/UIWidget.h"

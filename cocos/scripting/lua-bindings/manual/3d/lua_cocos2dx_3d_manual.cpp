@@ -28,7 +28,7 @@
 #include "3d/CCBundle3D.h"
 #include "3d/CCSprite3D.h"
 #include "3d/CCTerrain.h"
-
+#if CC_USE_3D_MODULE
 extern int lua_cocos2dx_3d_Sprite3D_setBlendFunc(lua_State* L);
 
 CC_DEPRECATED_ATTRIBUTE int lua_cocos2dx_3d_Sprite3D_setBlendFunc01(lua_State* L)
@@ -214,7 +214,7 @@ static void extendSprite3D(lua_State* L)
     }
     lua_pop(L, 1);
 }
-
+#endif
 bool luaval_to_terraindata(lua_State* L, int lo, cocos2d::Terrain::TerrainData* outValue , const char* funcName = "")
 {
     if (nullptr == L || nullptr == outValue)
@@ -583,8 +583,9 @@ static int register_all_cocos2dx_3d_manual(lua_State* L)
 {
     if (nullptr == L)
         return 0;
-
+#if CC_USE_3D_MODULE
     extendSprite3D(L);
+#endif
     extendTerrain(L);
     extendBundle3D(L);
     return 0;

@@ -24,7 +24,7 @@
 
 #ifndef __CCANIMATION3D_H__
 #define __CCANIMATION3D_H__
-
+#if CC_USE_3D_MODULE
 #include <unordered_map>
 
 #include "3d/CCAnimationCurve.h"
@@ -134,5 +134,5 @@ protected:
 // end of 3d group
 /// @}
 NS_CC_END
-
+#endif
 #endif // __CCANIMATION3D_H__

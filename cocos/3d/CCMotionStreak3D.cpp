@@ -23,7 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCMotionStreak3D.h"
 #include "math/CCVertex.h"
 #include "base/CCDirector.h"
@@ -414,3 +414,4 @@ void MotionStreak3D::draw(Renderer *renderer, const Mat4 &transform, uint32_t fl
 }
 
 NS_CC_END
+#endif

@@ -24,7 +24,7 @@
 
 #ifndef __CCANIMATE3D_H__
 #define __CCANIMATE3D_H__
-
+#if CC_USE_3D_MODULE
 #include <map>
 #include <unordered_map>
 
@@ -38,14 +38,14 @@ NS_CC_BEGIN
 class Bone3D;
 class Sprite3D;
 class EventCustom;
-
+#endif
 enum class Animate3DQuality
 {
     QUALITY_NONE = 0,          // it'll be ignore the curve-evaluating(the animation looks like stop), just accumulate transition time.
     QUALITY_LOW,               // low animation quality, it'll be more efficient.
     QUALITY_HIGH,              // high animation quality.
 };
-
+#if CC_USE_3D_MODULE
 /**
  * @addtogroup _3d
  * @{
@@ -189,5 +189,5 @@ protected:
 /// @}
 
 NS_CC_END
-
+#endif
 #endif // __CCANIMATE3D_H__

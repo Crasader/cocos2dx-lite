@@ -365,6 +365,16 @@ bool VideoPlayer::isPlaying() const
     return _isPlaying;
 }
 
+void VideoPlayer::setSkipEnable(bool bSkip)
+{
+    _bSkipEnable = bSkip;
+}
+
+bool VideoPlayer::isSkipEnable()
+{
+    return _bSkipEnable;
+}
+
 void VideoPlayer::onEnter()
 {
     Widget::onEnter();

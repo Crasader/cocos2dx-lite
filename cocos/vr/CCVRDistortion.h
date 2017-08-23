@@ -25,7 +25,7 @@
 
 #ifndef CCVRDistortion_h
 #define CCVRDistortion_h
-
+#if CC_ENABLE_VR
 #include "platform/CCPlatformMacros.h"
 
 NS_CC_BEGIN
@@ -49,5 +49,5 @@ private:
 };
 
 NS_CC_END
-
+#endif //CC_ENABLE_VR
 #endif /* CCVRDistortion_h */

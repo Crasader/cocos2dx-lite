@@ -25,7 +25,7 @@
 
 #ifndef CCVRDistortionMesh_hpp
 #define CCVRDistortionMesh_hpp
-
+#if CC_ENABLE_VR
 #include "platform/CCPlatformMacros.h"
 
 NS_CC_BEGIN
@@ -52,5 +52,5 @@ public:
 };
 
 NS_CC_END
-
+#endif //CC_ENABLE_VR
 #endif /* CCVRDistortionMesh_h */

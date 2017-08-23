@@ -28,17 +28,11 @@
     <Filter Include="manual\cocosdenshion">
       <UniqueIdentifier>{e88a3956-3c72-495d-bef5-75aa1b1e28a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="manual\cocosbuilder">
-      <UniqueIdentifier>{21be021b-accb-4bf7-9ab5-327661740a5b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="manual\cocostudio">
       <UniqueIdentifier>{7118046c-b71e-4510-b1ea-71916d909276}</UniqueIdentifier>
     </Filter>
     <Filter Include="manual\spine">
       <UniqueIdentifier>{4422fdad-3112-45d1-8eb4-87d8c08fac74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="manual\extension">
-      <UniqueIdentifier>{c8af8add-e72c-43a7-b89c-c6b9417f3cff}</UniqueIdentifier>
     </Filter>
     <Filter Include="manual\network">
       <UniqueIdentifier>{6a51257b-495f-480a-a491-951f58b82c49}</UniqueIdentifier>
@@ -78,6 +72,9 @@
     </Filter>
     <Filter Include="manual\navmesh">
       <UniqueIdentifier>{fa8be49e-8b79-4dc5-8f28-febde1347eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cjson">
+      <UniqueIdentifier>{ec2c21ab-bb3c-4341-9c35-02fc0c5725e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,16 +150,10 @@
     <ClCompile Include="..\auto\lua_cocos2dx_3d_auto.cpp">
       <Filter>auto</Filter>
     </ClCompile>
-    <ClCompile Include="..\auto\lua_cocos2dx_cocosbuilder_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
     <ClCompile Include="..\auto\lua_cocos2dx_cocosdenshion_auto.cpp">
       <Filter>auto</Filter>
     </ClCompile>
     <ClCompile Include="..\auto\lua_cocos2dx_experimental_video_auto.cpp">
-      <Filter>auto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\auto\lua_cocos2dx_extension_auto.cpp">
       <Filter>auto</Filter>
     </ClCompile>
     <ClCompile Include="..\auto\lua_cocos2dx_spine_auto.cpp">
@@ -180,17 +171,8 @@
     <ClCompile Include="..\manual\cocosdenshion\lua_cocos2dx_cocosdenshion_manual.cpp">
       <Filter>manual\cocosdenshion</Filter>
     </ClCompile>
-    <ClCompile Include="..\manual\cocosbuilder\CCBProxy.cpp">
-      <Filter>manual\cocosbuilder</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\cocosbuilder\lua_cocos2dx_cocosbuilder_manual.cpp">
-      <Filter>manual\cocosbuilder</Filter>
-    </ClCompile>
     <ClCompile Include="..\manual\cocostudio\lua_cocos2dx_coco_studio_manual.cpp">
       <Filter>manual\cocostudio</Filter>
-    </ClCompile>
-    <ClCompile Include="..\manual\extension\lua_cocos2dx_extension_manual.cpp">
-      <Filter>manual\extension</Filter>
     </ClCompile>
     <ClCompile Include="..\manual\network\lua_cocos2dx_network_manual.cpp">
       <Filter>manual\network</Filter>
@@ -300,6 +282,15 @@
     <ClCompile Include="..\manual\lua_module_register.cpp">
       <Filter>manual</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\external\lua\cjson\fpconv.c">
+      <Filter>cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\external\lua\cjson\lua_cjson.c">
+      <Filter>cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\external\lua\cjson\strbuf.c">
+      <Filter>cjson</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\auto\lua_cocos2dx_auto.hpp">
@@ -377,16 +368,10 @@
     <ClInclude Include="..\auto\lua_cocos2dx_3d_auto.hpp">
       <Filter>auto</Filter>
     </ClInclude>
-    <ClInclude Include="..\auto\lua_cocos2dx_cocosbuilder_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
     <ClInclude Include="..\auto\lua_cocos2dx_cocosdenshion_auto.hpp">
       <Filter>auto</Filter>
     </ClInclude>
     <ClInclude Include="..\auto\lua_cocos2dx_experimental_video_auto.hpp">
-      <Filter>auto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\auto\lua_cocos2dx_extension_auto.hpp">
       <Filter>auto</Filter>
     </ClInclude>
     <ClInclude Include="..\auto\lua_cocos2dx_spine_auto.hpp">
@@ -404,17 +389,8 @@
     <ClInclude Include="..\manual\cocosdenshion\lua_cocos2dx_cocosdenshion_manual.h">
       <Filter>manual\cocosdenshion</Filter>
     </ClInclude>
-    <ClInclude Include="..\manual\cocosbuilder\CCBProxy.h">
-      <Filter>manual\cocosbuilder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\cocosbuilder\lua_cocos2dx_cocosbuilder_manual.h">
-      <Filter>manual\cocosbuilder</Filter>
-    </ClInclude>
     <ClInclude Include="..\manual\cocostudio\lua_cocos2dx_coco_studio_manual.hpp">
       <Filter>manual\cocostudio</Filter>
-    </ClInclude>
-    <ClInclude Include="..\manual\extension\lua_cocos2dx_extension_manual.h">
-      <Filter>manual\extension</Filter>
     </ClInclude>
     <ClInclude Include="..\manual\network\lua_cocos2dx_network_manual.h">
       <Filter>manual\network</Filter>
@@ -529,6 +505,15 @@
     </ClInclude>
     <ClInclude Include="..\manual\Lua-BindingsExport.h">
       <Filter>manual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\external\lua\cjson\fpconv.h">
+      <Filter>cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\external\lua\cjson\lua_cjson.h">
+      <Filter>cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\external\lua\cjson\strbuf.h">
+      <Filter>cjson</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

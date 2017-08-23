@@ -229,7 +229,7 @@ public class Cocos2dxDownloader {
     private AsyncHttpClient _httpClient = new AsyncHttpClient();
     private String _tempFileNameSufix;
     private int _countOfMaxProcessingTasks;
-    private HashMap _taskMap = new HashMap();
+    private HashMap<Integer, DownloadTask> _taskMap = new HashMap<Integer, DownloadTask>();
     private Queue<Runnable> _taskQueue = new LinkedList<Runnable>();
     private int _runningTaskCount = 0;
     private static HashMap<String, Boolean> _resumingSupport = new HashMap<String, Boolean>();
@@ -281,7 +281,7 @@ public class Cocos2dxDownloader {
             downloader._httpClient.setTimeout(timeoutInSeconds * 1000);
         }
         // downloader._httpClient.setMaxRetriesAndTimeout(3, timeoutInSeconds * 1000);
-        downloader._httpClient.allowRetryExceptionClass(javax.net.ssl.SSLException.class);
+        AsyncHttpClient.allowRetryExceptionClass(javax.net.ssl.SSLException.class);
 
         downloader._tempFileNameSufix = tempFileNameSufix;
         downloader._countOfMaxProcessingTasks = countOfMaxProcessingTasks;
@@ -382,7 +382,7 @@ public class Cocos2dxDownloader {
             public void run() {
 
                 //downloader._httpClient.cancelAllRequests(true);
-                Iterator iter = downloader._taskMap.entrySet().iterator();
+                Iterator<?> iter = downloader._taskMap.entrySet().iterator();
                 while (iter.hasNext()) {
                     Map.Entry entry = (Map.Entry) iter.next();
                     //Object key = entry.getKey();

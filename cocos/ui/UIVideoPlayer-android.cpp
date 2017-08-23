@@ -76,6 +76,7 @@ VideoPlayer::VideoPlayer()
 , _keepAspectRatioEnabled(false)
 , _videoPlayerIndex(-1)
 , _eventCallback(nullptr)
+, _bSkipEnable(false)
 {
     _videoPlayerIndex = createVideoWidgetJNI();
     s_allVideoPlayers[_videoPlayerIndex] = this;
@@ -228,6 +229,21 @@ void VideoPlayer::seekTo(float sec)
 bool VideoPlayer::isPlaying() const
 {
     return _isPlaying;
+}
+
+void VideoPlayer::setSkipEnable(bool bSkip)
+{
+    if(_bSkipEnable == bSkip)
+    {
+        return;
+    }
+    _bSkipEnable = bSkip;
+    JniHelper::callStaticVoidMethod(videoHelperClassName, "setVideoSkipEnable", _videoPlayerIndex, (bSkip ? 1 : 0));
+}
+
+bool VideoPlayer::isSkipEnable() const
+{
+    return _bSkipEnable;
 }
 
 void VideoPlayer::setVisible(bool visible)

@@ -73,6 +73,23 @@ GLProgramState* GLProgramStateCache::getGLProgramState(GLProgram* glprogram)
     return ret;
 }
 
+void GLProgramStateCache::removeGLProgramState(GLProgram* glprogram)
+{
+	if (glprogram == nullptr)
+	{
+		return;
+	}
+	const auto& itr = _glProgramStates.find(glprogram);
+	if (itr == _glProgramStates.end())
+	{
+		return;
+	}
+	if (itr->second->getReferenceCount() == 1)
+	{
+		_glProgramStates.erase(itr);
+	}
+}
+
 void GLProgramStateCache::removeUnusedGLProgramState()
 {
     for( auto it=_glProgramStates.cbegin(); it!=_glProgramStates.cend(); /* nothing */) {

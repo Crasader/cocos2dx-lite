@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_ENABLE_VR
 #include "vr/CCVRDistortionMesh.h"
 
 #include <vector>
@@ -151,3 +151,4 @@ DistortionMesh::DistortionMesh(Distortion *distortion,
 }
 
 NS_CC_END
+#endif //CC_ENABLE_VR

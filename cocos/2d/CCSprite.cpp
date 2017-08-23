@@ -1694,6 +1694,11 @@ void Sprite::updateBlendFunc(void)
 {
     CCASSERT(_renderMode != RenderMode::QUAD_BATCHNODE, "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a SpriteBatchNode");
 
+	//如果主动设置过blendFunc，那么返回
+	if(_blendFunc != BlendFunc::ALPHA_NON_PREMULTIPLIED && _blendFunc != BlendFunc::ALPHA_PREMULTIPLIED)
+	{
+		return;
+	}
     // it is possible to have an untextured sprite
     if (! _texture || ! _texture->hasPremultipliedAlpha())
     {

@@ -194,12 +194,12 @@ int lua_cocos2dx_Console_addSubCommand(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Console::Command arg0;
             #pragma warning NO CONVERSION TO NATIVE FOR Command
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             cocos2d::Console::Command arg1;
             #pragma warning NO CONVERSION TO NATIVE FOR Command
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             cobj->addSubCommand(arg0, arg1);
@@ -216,7 +216,7 @@ int lua_cocos2dx_Console_addSubCommand(lua_State* tolua_S)
             if (!ok) { break; }
             cocos2d::Console::Command arg1;
             #pragma warning NO CONVERSION TO NATIVE FOR Command
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             cobj->addSubCommand(arg0, arg1);
@@ -360,7 +360,7 @@ int lua_cocos2dx_Console_getSubCommand(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Console::Command arg0;
             #pragma warning NO CONVERSION TO NATIVE FOR Command
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             std::string arg1;
@@ -671,7 +671,7 @@ int lua_cocos2dx_Console_delSubCommand(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Console::Command arg0;
             #pragma warning NO CONVERSION TO NATIVE FOR Command
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             std::string arg1;
@@ -4310,6 +4310,7 @@ int lua_cocos2dx_Node_removeComponent(lua_State* tolua_S)
 
     return 0;
 }
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Node_setPhysicsBody(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4360,6 +4361,7 @@ int lua_cocos2dx_Node_setPhysicsBody(lua_State* tolua_S)
 
     return 0;
 }
+#endif
 int lua_cocos2dx_Node_getDescription(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4635,10 +4637,10 @@ int lua_cocos2dx_Node_setOnExitCallback(lua_State* tolua_S)
         std::function<void ()> arg0;
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Node_setOnExitCallback'", nullptr);
@@ -5280,10 +5282,10 @@ int lua_cocos2dx_Node_setonEnterTransitionDidFinishCallback(lua_State* tolua_S)
         std::function<void ()> arg0;
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Node_setonEnterTransitionDidFinishCallback'", nullptr);
@@ -5997,10 +5999,10 @@ int lua_cocos2dx_Node_setOnEnterCallback(lua_State* tolua_S)
         std::function<void ()> arg0;
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Node_setOnEnterCallback'", nullptr);
@@ -6151,10 +6153,10 @@ int lua_cocos2dx_Node_setonExitTransitionDidStartCallback(lua_State* tolua_S)
         std::function<void ()> arg0;
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Node_setonExitTransitionDidStartCallback'", nullptr);
@@ -7812,6 +7814,7 @@ int lua_cocos2dx_Node_getRotation(lua_State* tolua_S)
 
     return 0;
 }
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Node_getPhysicsBody(lua_State* tolua_S)
 {
     int argc = 0;
@@ -7859,6 +7862,7 @@ int lua_cocos2dx_Node_getPhysicsBody(lua_State* tolua_S)
 
     return 0;
 }
+#endif
 int lua_cocos2dx_Node_getAnchorPointInPoints(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11171,7 +11175,10 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Node_constructor);
         tolua_function(tolua_S,"addChild",lua_cocos2dx_Node_addChild);
         tolua_function(tolua_S,"removeComponent",lua_cocos2dx_Node_removeComponent);
+#if CC_USE_PHYSICS
         tolua_function(tolua_S,"setPhysicsBody",lua_cocos2dx_Node_setPhysicsBody);
+        tolua_function(tolua_S, "getPhysicsBody", lua_cocos2dx_Node_getPhysicsBody);
+#endif
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_Node_getDescription);
         tolua_function(tolua_S,"setRotationSkewY",lua_cocos2dx_Node_setRotationSkewY);
         tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_Node_setOpacityModifyRGB);
@@ -11241,7 +11248,6 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"runAction",lua_cocos2dx_Node_runAction);
         tolua_function(tolua_S,"visit",lua_cocos2dx_Node_visit);
         tolua_function(tolua_S,"getRotation",lua_cocos2dx_Node_getRotation);
-        tolua_function(tolua_S,"getPhysicsBody",lua_cocos2dx_Node_getPhysicsBody);
         tolua_function(tolua_S,"getAnchorPointInPoints",lua_cocos2dx_Node_getAnchorPointInPoints);
         tolua_function(tolua_S,"removeChildByName",lua_cocos2dx_Node_removeChildByName);
         tolua_function(tolua_S,"getGLProgramState",lua_cocos2dx_Node_getGLProgramState);
@@ -11315,7 +11321,7 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
     g_typeCast["Node"] = "cc.Node";
     return 1;
 }
-
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Scene_initWithPhysics(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11363,6 +11369,7 @@ int lua_cocos2dx_Scene_initWithPhysics(lua_State* tolua_S)
 
     return 0;
 }
+#endif
 int lua_cocos2dx_Scene_setCameraOrderDirty(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11501,6 +11508,7 @@ int lua_cocos2dx_Scene_render(lua_State* tolua_S)
 
     return 0;
 }
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Scene_stepPhysicsAndNavigation(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11551,6 +11559,7 @@ int lua_cocos2dx_Scene_stepPhysicsAndNavigation(lua_State* tolua_S)
 
     return 0;
 }
+#endif
 int lua_cocos2dx_Scene_onProjectionChanged(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11601,6 +11610,7 @@ int lua_cocos2dx_Scene_onProjectionChanged(lua_State* tolua_S)
 
     return 0;
 }
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Scene_getPhysicsWorld(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11648,6 +11658,7 @@ int lua_cocos2dx_Scene_getPhysicsWorld(lua_State* tolua_S)
 
     return 0;
 }
+#endif
 int lua_cocos2dx_Scene_initWithSize(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11815,6 +11826,7 @@ int lua_cocos2dx_Scene_create(lua_State* tolua_S)
 #endif
     return 0;
 }
+#if CC_USE_PHYSICS
 int lua_cocos2dx_Scene_createWithPhysics(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11849,6 +11861,7 @@ int lua_cocos2dx_Scene_createWithPhysics(lua_State* tolua_S)
 #endif
     return 0;
 }
+#endif
 int lua_cocos2dx_Scene_constructor(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11899,17 +11912,19 @@ int lua_register_cocos2dx_Scene(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"Scene");
         tolua_function(tolua_S,"new",lua_cocos2dx_Scene_constructor);
-        tolua_function(tolua_S,"initWithPhysics",lua_cocos2dx_Scene_initWithPhysics);
         tolua_function(tolua_S,"setCameraOrderDirty",lua_cocos2dx_Scene_setCameraOrderDirty);
         tolua_function(tolua_S,"render",lua_cocos2dx_Scene_render);
+#if CC_USE_PHYSICS
+        tolua_function(tolua_S, "initWithPhysics", lua_cocos2dx_Scene_initWithPhysics);
         tolua_function(tolua_S,"stepPhysicsAndNavigation",lua_cocos2dx_Scene_stepPhysicsAndNavigation);
-        tolua_function(tolua_S,"onProjectionChanged",lua_cocos2dx_Scene_onProjectionChanged);
+        tolua_function(tolua_S, "createWithPhysics", lua_cocos2dx_Scene_createWithPhysics);
         tolua_function(tolua_S,"getPhysicsWorld",lua_cocos2dx_Scene_getPhysicsWorld);
+#endif
+        tolua_function(tolua_S,"onProjectionChanged",lua_cocos2dx_Scene_onProjectionChanged);
         tolua_function(tolua_S,"initWithSize",lua_cocos2dx_Scene_initWithSize);
         tolua_function(tolua_S,"getDefaultCamera",lua_cocos2dx_Scene_getDefaultCamera);
         tolua_function(tolua_S,"createWithSize", lua_cocos2dx_Scene_createWithSize);
         tolua_function(tolua_S,"create", lua_cocos2dx_Scene_create);
-        tolua_function(tolua_S,"createWithPhysics", lua_cocos2dx_Scene_createWithPhysics);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::Scene).name();
     g_luaType[typeName] = "cc.Scene";
@@ -12166,6 +12181,7 @@ int lua_cocos2dx_GLView_setIMEKeyboardState(lua_State* tolua_S)
 }
 int lua_cocos2dx_GLView_getVR(lua_State* tolua_S)
 {
+#if CC_ENABLE_VR
     int argc = 0;
     cocos2d::GLView* cobj = nullptr;
     bool ok  = true;
@@ -12208,7 +12224,7 @@ int lua_cocos2dx_GLView_getVR(lua_State* tolua_S)
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLView_getVR'.",&tolua_err);
 #endif
-
+#endif //CC_ENABLE_VR
     return 0;
 }
 int lua_cocos2dx_GLView_setScissorInPoints(lua_State* tolua_S)
@@ -13090,8 +13106,10 @@ int lua_cocos2dx_GLView_renderScene(lua_State* tolua_S)
 
     return 0;
 }
+
 int lua_cocos2dx_GLView_setVR(lua_State* tolua_S)
 {
+#if CC_ENABLE_VR
     int argc = 0;
     cocos2d::GLView* cobj = nullptr;
     bool ok  = true;
@@ -13137,9 +13155,10 @@ int lua_cocos2dx_GLView_setVR(lua_State* tolua_S)
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLView_setVR'.",&tolua_err);
 #endif
-
+#endif //CC_ENABLE_VR
     return 0;
 }
+
 int lua_cocos2dx_GLView_setViewPortInPoints(lua_State* tolua_S)
 {
     int argc = 0;
@@ -13550,7 +13569,7 @@ int lua_cocos2dx_GLView_setGLContextAttrs(lua_State* tolua_S)
     {
         GLContextAttrs arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR GLContextAttrs
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_GLView_setGLContextAttrs'", nullptr);
@@ -17830,10 +17849,10 @@ int lua_cocos2dx_AsyncTaskPool_enqueue(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void ()> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->enqueue(arg0, arg1);
@@ -17850,23 +17869,23 @@ int lua_cocos2dx_AsyncTaskPool_enqueue(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (void *)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             void* arg2;
             #pragma warning NO CONVERSION TO NATIVE FOR void*
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             std::function<void ()> arg3;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->enqueue(arg0, arg1, arg2, arg3);
@@ -20502,46 +20521,43 @@ int lua_cocos2dx_GLProgramState_setUniformVec4(lua_State* tolua_S)
     }
 #endif
     argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
+    if(argc == 2)
+    {
+        tolua_Error tolua_err;
+        if(tolua_isnumber(tolua_S, 2, 0, &tolua_err))
+        {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.GLProgramState:setUniformVec4");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec4 arg1;
             ok &= luaval_to_vec4(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec4");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec4(arg0, arg1);
             lua_settop(tolua_S, 1);
-            return 1;
         }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 2) {
+        else
+        {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.GLProgramState:setUniformVec4");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec4 arg1;
             ok &= luaval_to_vec4(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec4");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec4(arg0, arg1);
             lua_settop(tolua_S, 1);
-            return 1;
         }
-    }while(0);
-    ok  = true;
-    luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.GLProgramState:setUniformVec4",argc, 2);
-    return 0;
-
+        return 1;
+    }
+tolua_lerror:
+	luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.GLProgramState:setUniformVec4",argc, 2);
+	return 0;
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgramState_setUniformVec4'.",&tolua_err);
 #endif
-
     return 0;
 }
 int lua_cocos2dx_GLProgramState_applyAutoBinding(lua_State* tolua_S)
@@ -20618,46 +20634,43 @@ int lua_cocos2dx_GLProgramState_setUniformVec2(lua_State* tolua_S)
     }
 #endif
     argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
+    if(argc == 2)
+    {
+        tolua_Error tolua_err;
+        if(tolua_isnumber(tolua_S, 2, 0, &tolua_err))
+    {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.GLProgramState:setUniformVec2");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec2 arg1;
             ok &= luaval_to_vec2(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec2");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec2(arg0, arg1);
             lua_settop(tolua_S, 1);
-            return 1;
         }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 2) {
+        else
+        {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.GLProgramState:setUniformVec2");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec2 arg1;
             ok &= luaval_to_vec2(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec2");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec2(arg0, arg1);
             lua_settop(tolua_S, 1);
+        }
             return 1;
         }
-    }while(0);
-    ok  = true;
+tolua_lerror:
     luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.GLProgramState:setUniformVec2",argc, 2);
     return 0;
-
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgramState_setUniformVec2'.",&tolua_err);
 #endif
-
     return 0;
 }
 int lua_cocos2dx_GLProgramState_setUniformVec3(lua_State* tolua_S)
@@ -20681,46 +20694,43 @@ int lua_cocos2dx_GLProgramState_setUniformVec3(lua_State* tolua_S)
     }
 #endif
     argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
+    if(argc == 2)
+    {
+        tolua_Error tolua_err;
+        if(tolua_isnumber(tolua_S, 2, 0, &tolua_err))
+        {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0, "cc.GLProgramState:setUniformVec3");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec3 arg1;
             ok &= luaval_to_vec3(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec3");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec3(arg0, arg1);
             lua_settop(tolua_S, 1);
-            return 1;
         }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 2) {
+        else
+        {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.GLProgramState:setUniformVec3");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cocos2d::Vec3 arg1;
             ok &= luaval_to_vec3(tolua_S, 3, &arg1, "cc.GLProgramState:setUniformVec3");
 
-            if (!ok) { break; }
+            if (!ok) goto tolua_lerror;
             cobj->setUniformVec3(arg0, arg1);
             lua_settop(tolua_S, 1);
+        }
             return 1;
         }
-    }while(0);
-    ok  = true;
+tolua_lerror:    
     luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n",  "cc.GLProgramState:setUniformVec3",argc, 2);
     return 0;
-
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgramState_setUniformVec3'.",&tolua_err);
 #endif
-
     return 0;
 }
 int lua_cocos2dx_GLProgramState_apply(lua_State* tolua_S)
@@ -21416,7 +21426,7 @@ int lua_cocos2dx_GLProgramState_setUniformFloatv(lua_State* tolua_S)
             if (!ok) { break; }
             const float* arg2;
             #pragma warning NO CONVERSION TO NATIVE FOR float*
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             cobj->setUniformFloatv(arg0, arg1, arg2);
@@ -21437,7 +21447,7 @@ int lua_cocos2dx_GLProgramState_setUniformFloatv(lua_State* tolua_S)
             if (!ok) { break; }
             const float* arg2;
             #pragma warning NO CONVERSION TO NATIVE FOR float*
-		ok = false;
+        ok = false;
 
             if (!ok) { break; }
             cobj->setUniformFloatv(arg0, arg1, arg2);
@@ -22291,7 +22301,7 @@ int lua_cocos2dx_PolygonInfo_setQuads(lua_State* tolua_S)
         int arg1;
 
         #pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
-		ok = false;
+        ok = false;
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1, "cc.PolygonInfo:setQuads");
         if(!ok)
@@ -22438,7 +22448,7 @@ int lua_cocos2dx_PolygonInfo_setQuad(lua_State* tolua_S)
         cocos2d::V3F_C4B_T2F_Quad* arg0;
 
         #pragma warning NO CONVERSION TO NATIVE FOR V3F_C4B_T2F_Quad*
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_PolygonInfo_setQuad'", nullptr);
@@ -22489,7 +22499,7 @@ int lua_cocos2dx_PolygonInfo_setTriangles(lua_State* tolua_S)
         cocos2d::TrianglesCommand::Triangles arg0;
 
         #pragma warning NO CONVERSION TO NATIVE FOR Triangles
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_PolygonInfo_setTriangles'", nullptr);
@@ -28200,7 +28210,7 @@ int lua_cocos2dx_BezierBy_initWithDuration(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.BezierBy:initWithDuration");
 
         #pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_BezierBy_initWithDuration'", nullptr);
@@ -28312,7 +28322,7 @@ int lua_cocos2dx_BezierTo_initWithDuration(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 2,&arg0, "cc.BezierTo:initWithDuration");
 
         #pragma warning NO CONVERSION TO NATIVE FOR _ccBezierConfig
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_BezierTo_initWithDuration'", nullptr);
@@ -30359,10 +30369,10 @@ int lua_cocos2dx_ActionFloat_initWithDuration(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 4,&arg2, "cc.ActionFloat:initWithDuration");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ActionFloat_initWithDuration'", nullptr);
@@ -30407,10 +30417,10 @@ int lua_cocos2dx_ActionFloat_create(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 3,&arg1, "cc.ActionFloat:create");
         ok &= luaval_to_number(tolua_S, 4,&arg2, "cc.ActionFloat:create");
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_ActionFloat_create'", nullptr);
@@ -30814,7 +30824,7 @@ int lua_cocos2dx_Properties_getPath(lua_State* tolua_S)
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp, "cc.Properties:getPath"); arg0 = arg0_tmp.c_str();
 
         #pragma warning NO CONVERSION TO NATIVE FOR std::string*
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Properties_getPath'", nullptr);
@@ -32891,10 +32901,10 @@ int lua_cocos2dx_FileUtils_getStringFromFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (std::basic_string<char>)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->getStringFromFile(arg0, arg1);
@@ -33004,10 +33014,10 @@ int lua_cocos2dx_FileUtils_removeFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->removeFile(arg0, arg1);
@@ -33072,10 +33082,10 @@ int lua_cocos2dx_FileUtils_listFilesRecursivelyAsync(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.FileUtils:listFilesRecursivelyAsync");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_FileUtils_listFilesRecursivelyAsync'", nullptr);
@@ -33182,10 +33192,10 @@ int lua_cocos2dx_FileUtils_renameFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg3;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->renameFile(arg0, arg1, arg2, arg3);
@@ -33242,10 +33252,10 @@ int lua_cocos2dx_FileUtils_renameFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg2;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->renameFile(arg0, arg1, arg2);
@@ -33784,10 +33794,10 @@ int lua_cocos2dx_FileUtils_getFileSize(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (long)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->getFileSize(arg0, arg1);
@@ -33900,10 +33910,10 @@ int lua_cocos2dx_FileUtils_removeDirectory(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->removeDirectory(arg0, arg1);
@@ -34017,10 +34027,10 @@ int lua_cocos2dx_FileUtils_writeStringToFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg2;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->writeStringToFile(arg0, arg1, arg2);
@@ -34272,10 +34282,10 @@ int lua_cocos2dx_FileUtils_writeValueVectorToFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg2;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->writeValueVectorToFile(arg0, arg1, arg2);
@@ -34339,10 +34349,10 @@ int lua_cocos2dx_FileUtils_isFileExist(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->isFileExist(arg0, arg1);
@@ -34556,10 +34566,10 @@ int lua_cocos2dx_FileUtils_writeValueMapToFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg2;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->writeValueMapToFile(arg0, arg1, arg2);
@@ -34773,10 +34783,10 @@ int lua_cocos2dx_FileUtils_isDirectoryExist(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->isDirectoryExist(arg0, arg1);
@@ -34933,10 +34943,10 @@ int lua_cocos2dx_FileUtils_createDirectory(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (bool)> arg1;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             cobj->createDirectory(arg0, arg1);
@@ -35001,10 +35011,10 @@ int lua_cocos2dx_FileUtils_listFilesAsync(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.FileUtils:listFilesAsync");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_FileUtils_listFilesAsync'", nullptr);
@@ -35916,7 +35926,7 @@ int lua_cocos2dx_EventDispatcher_dispatchCustomEvent(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.EventDispatcher:dispatchCustomEvent");
 
         #pragma warning NO CONVERSION TO NATIVE FOR void*
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_EventDispatcher_dispatchCustomEvent'", nullptr);
@@ -36157,10 +36167,10 @@ int lua_cocos2dx_EventDispatcher_addCustomEventListener(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.EventDispatcher:addCustomEventListener");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_EventDispatcher_addCustomEventListener'", nullptr);
@@ -36641,10 +36651,10 @@ int lua_cocos2dx_EventListenerAcceleration_init(lua_State* tolua_S)
         std::function<void (cocos2d::Acceleration *, cocos2d::Event *)> arg0;
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_EventListenerAcceleration_init'", nullptr);
@@ -61816,10 +61826,10 @@ int lua_cocos2dx_MenuItemLabel_initWithLabel(lua_State* tolua_S)
         ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0, "cc.MenuItemLabel:initWithLabel");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemLabel_initWithLabel'", nullptr);
@@ -62046,10 +62056,10 @@ int lua_cocos2dx_MenuItemAtlasFont_initWithString(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 6,&arg4, "cc.MenuItemAtlasFont:initWithString");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemAtlasFont_initWithString'", nullptr);
@@ -62258,10 +62268,10 @@ int lua_cocos2dx_MenuItemFont_initWithString(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0, "cc.MenuItemFont:initWithString");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemFont_initWithString'", nullptr);
@@ -62821,10 +62831,10 @@ int lua_cocos2dx_MenuItemSprite_initWithNormalSprite(lua_State* tolua_S)
         ok &= luaval_to_object<cocos2d::Node>(tolua_S, 4, "cc.Node",&arg2, "cc.MenuItemSprite:initWithNormalSprite");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemSprite_initWithNormalSprite'", nullptr);
@@ -63386,10 +63396,10 @@ int lua_cocos2dx_MenuItemImage_initWithNormalImage(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 4,&arg2, "cc.MenuItemImage:initWithNormalImage");
 
         do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_MenuItemImage_initWithNormalImage'", nullptr);
@@ -78617,10 +78627,10 @@ int lua_cocos2dx_RenderTexture_saveToFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (cocos2d::RenderTexture *, const std::basic_string<char> &)> arg3;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             bool ret = cobj->saveToFile(arg0, arg1, arg2, arg3);
@@ -78669,10 +78679,10 @@ int lua_cocos2dx_RenderTexture_saveToFile(lua_State* tolua_S)
             if (!ok) { break; }
             std::function<void (cocos2d::RenderTexture *, const std::basic_string<char> &)> arg2;
             do {
-			// Lambda binding for lua is not supported.
-			assert(false);
-		} while(0)
-		;
+            // Lambda binding for lua is not supported.
+            assert(false);
+        } while(0)
+        ;
 
             if (!ok) { break; }
             bool ret = cobj->saveToFile(arg0, arg1, arg2);
@@ -84863,7 +84873,7 @@ int lua_cocos2dx_Camera_setViewport(lua_State* tolua_S)
         cocos2d::experimental::Viewport arg0;
 
         #pragma warning NO CONVERSION TO NATIVE FOR Viewport
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Camera_setViewport'", nullptr);
@@ -86026,7 +86036,7 @@ int lua_cocos2dx_Camera_setDefaultViewport(lua_State* tolua_S)
     {
         cocos2d::experimental::Viewport arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR Viewport
-		ok = false;
+        ok = false;
         if(!ok)
         {
             tolua_error(tolua_S,"invalid arguments in function 'lua_cocos2dx_Camera_setDefaultViewport'", nullptr);
@@ -102977,7 +102987,7 @@ int lua_register_cocos2dx_TileMapAtlas(lua_State* tolua_S)
     g_typeCast["TileMapAtlas"] = "cc.TileMapAtlas";
     return 1;
 }
-
+#if CC_USE_3D_MODULE
 int lua_cocos2dx_MotionStreak3D_reset(lua_State* tolua_S)
 {
     int argc = 0;
@@ -103761,9 +103771,10 @@ static int lua_cocos2dx_MotionStreak3D_finalize(lua_State* tolua_S)
     printf("luabindings: finalizing LUA object (MotionStreak3D)");
     return 0;
 }
-
+#endif
 int lua_register_cocos2dx_MotionStreak3D(lua_State* tolua_S)
 {
+#if CC_USE_3D_MODULE
     tolua_usertype(tolua_S,"cc.MotionStreak3D");
     tolua_cclass(tolua_S,"MotionStreak3D","cc.MotionStreak3D","cc.Node",nullptr);
 
@@ -103787,6 +103798,7 @@ int lua_register_cocos2dx_MotionStreak3D(lua_State* tolua_S)
     std::string typeName = typeid(cocos2d::MotionStreak3D).name();
     g_luaType[typeName] = "cc.MotionStreak3D";
     g_typeCast["MotionStreak3D"] = "cc.MotionStreak3D";
+#endif
     return 1;
 }
 
@@ -103987,281 +103999,281 @@ int lua_register_cocos2dx_ComponentLua(lua_State* tolua_S)
 }
 TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 {
-	tolua_open(tolua_S);
-	
-	tolua_module(tolua_S,"cc",0);
-	tolua_beginmodule(tolua_S,"cc");
+    tolua_open(tolua_S);
+    
+    tolua_module(tolua_S,"cc",0);
+    tolua_beginmodule(tolua_S,"cc");
 
-	lua_register_cocos2dx_Ref(tolua_S);
-	lua_register_cocos2dx_RenderState(tolua_S);
-	lua_register_cocos2dx_Material(tolua_S);
-	lua_register_cocos2dx_Console(tolua_S);
-	lua_register_cocos2dx_Node(tolua_S);
-	lua_register_cocos2dx_Scene(tolua_S);
-	lua_register_cocos2dx_TransitionScene(tolua_S);
-	lua_register_cocos2dx_TransitionEaseScene(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInL(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInB(tolua_S);
-	lua_register_cocos2dx_AtlasNode(tolua_S);
-	lua_register_cocos2dx_TileMapAtlas(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInT(tolua_S);
-	lua_register_cocos2dx_TMXTilesetInfo(tolua_S);
-	lua_register_cocos2dx_TransitionMoveInR(tolua_S);
-	lua_register_cocos2dx_Action(tolua_S);
-	lua_register_cocos2dx_FiniteTimeAction(tolua_S);
-	lua_register_cocos2dx_ActionInstant(tolua_S);
-	lua_register_cocos2dx_Hide(tolua_S);
-	lua_register_cocos2dx_ParticleSystem(tolua_S);
-	lua_register_cocos2dx_ParticleSystemQuad(tolua_S);
-	lua_register_cocos2dx_ParticleSpiral(tolua_S);
-	lua_register_cocos2dx_GridBase(tolua_S);
-	lua_register_cocos2dx_AnimationCache(tolua_S);
-	lua_register_cocos2dx_ActionInterval(tolua_S);
-	lua_register_cocos2dx_ActionCamera(tolua_S);
-	lua_register_cocos2dx_ProgressFromTo(tolua_S);
-	lua_register_cocos2dx_MoveBy(tolua_S);
-	lua_register_cocos2dx_MoveTo(tolua_S);
-	lua_register_cocos2dx_JumpBy(tolua_S);
-	lua_register_cocos2dx_EventListener(tolua_S);
-	lua_register_cocos2dx_EventListenerKeyboard(tolua_S);
-	lua_register_cocos2dx_EventListenerMouse(tolua_S);
-	lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
-	lua_register_cocos2dx_Event(tolua_S);
-	lua_register_cocos2dx_EventController(tolua_S);
-	lua_register_cocos2dx_Director(tolua_S);
-	lua_register_cocos2dx_Scheduler(tolua_S);
-	lua_register_cocos2dx_ActionEase(tolua_S);
-	lua_register_cocos2dx_EaseElastic(tolua_S);
-	lua_register_cocos2dx_EaseElasticOut(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionInOut(tolua_S);
-	lua_register_cocos2dx_EaseBackOut(tolua_S);
-	lua_register_cocos2dx_Texture2D(tolua_S);
-	lua_register_cocos2dx_TransitionSceneOriented(tolua_S);
-	lua_register_cocos2dx_TransitionFlipX(tolua_S);
-	lua_register_cocos2dx_CameraBackgroundBrush(tolua_S);
-	lua_register_cocos2dx_CameraBackgroundDepthBrush(tolua_S);
-	lua_register_cocos2dx_CameraBackgroundColorBrush(tolua_S);
-	lua_register_cocos2dx_GridAction(tolua_S);
-	lua_register_cocos2dx_TiledGrid3DAction(tolua_S);
-	lua_register_cocos2dx_FadeOutTRTiles(tolua_S);
-	lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
-	lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
-	lua_register_cocos2dx_StopGrid(tolua_S);
-	lua_register_cocos2dx_Technique(tolua_S);
-	lua_register_cocos2dx_SkewTo(tolua_S);
-	lua_register_cocos2dx_SkewBy(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionOut(tolua_S);
-	lua_register_cocos2dx_TransitionProgress(tolua_S);
-	lua_register_cocos2dx_TransitionProgressVertical(tolua_S);
-	lua_register_cocos2dx_Layer(tolua_S);
-	lua_register_cocos2dx_TMXTiledMap(tolua_S);
-	lua_register_cocos2dx_Grid3DAction(tolua_S);
-	lua_register_cocos2dx_BaseLight(tolua_S);
-	lua_register_cocos2dx_SpotLight(tolua_S);
-	lua_register_cocos2dx_FadeTo(tolua_S);
-	lua_register_cocos2dx_FadeIn(tolua_S);
-	lua_register_cocos2dx_DirectionLight(tolua_S);
-	lua_register_cocos2dx_ShakyTiles3D(tolua_S);
-	lua_register_cocos2dx_EventListenerCustom(tolua_S);
-	lua_register_cocos2dx_FlipX3D(tolua_S);
-	lua_register_cocos2dx_FlipY3D(tolua_S);
-	lua_register_cocos2dx_EaseSineInOut(tolua_S);
-	lua_register_cocos2dx_TransitionFlipAngular(tolua_S);
-	lua_register_cocos2dx_EaseElasticInOut(tolua_S);
-	lua_register_cocos2dx_EaseBounce(tolua_S);
-	lua_register_cocos2dx_Show(tolua_S);
-	lua_register_cocos2dx_FadeOut(tolua_S);
-	lua_register_cocos2dx_CallFunc(tolua_S);
-	lua_register_cocos2dx_EventMouse(tolua_S);
-	lua_register_cocos2dx_GLView(tolua_S);
-	lua_register_cocos2dx_EaseBezierAction(tolua_S);
-	lua_register_cocos2dx_ParticleFireworks(tolua_S);
-	lua_register_cocos2dx_MenuItem(tolua_S);
-	lua_register_cocos2dx_MenuItemSprite(tolua_S);
-	lua_register_cocos2dx_MenuItemImage(tolua_S);
-	lua_register_cocos2dx_AutoPolygon(tolua_S);
-	lua_register_cocos2dx_ParticleSmoke(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipAngular(tolua_S);
-	lua_register_cocos2dx_EaseRateAction(tolua_S);
-	lua_register_cocos2dx_EaseIn(tolua_S);
-	lua_register_cocos2dx_EaseExponentialInOut(tolua_S);
-	lua_register_cocos2dx_CardinalSplineTo(tolua_S);
-	lua_register_cocos2dx_CatmullRomTo(tolua_S);
-	lua_register_cocos2dx_Waves3D(tolua_S);
-	lua_register_cocos2dx_EaseExponentialOut(tolua_S);
-	lua_register_cocos2dx_Label(tolua_S);
-	lua_register_cocos2dx_Application(tolua_S);
-	lua_register_cocos2dx_DelayTime(tolua_S);
-	lua_register_cocos2dx_LabelAtlas(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionOut(tolua_S);
-	lua_register_cocos2dx_SpriteBatchNode(tolua_S);
-	lua_register_cocos2dx_TMXLayer(tolua_S);
-	lua_register_cocos2dx_AsyncTaskPool(tolua_S);
-	lua_register_cocos2dx_ParticleSnow(tolua_S);
-	lua_register_cocos2dx_EaseElasticIn(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionInOut(tolua_S);
-	lua_register_cocos2dx_TransitionFadeTR(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionOut(tolua_S);
-	lua_register_cocos2dx_EventAcceleration(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionIn(tolua_S);
-	lua_register_cocos2dx_TextureCache(tolua_S);
-	lua_register_cocos2dx_ActionTween(tolua_S);
-	lua_register_cocos2dx_TransitionFadeDown(tolua_S);
-	lua_register_cocos2dx_ParticleSun(tolua_S);
-	lua_register_cocos2dx_TransitionProgressHorizontal(tolua_S);
-	lua_register_cocos2dx_TMXObjectGroup(tolua_S);
-	lua_register_cocos2dx_ParticleFire(tolua_S);
-	lua_register_cocos2dx_FlipX(tolua_S);
-	lua_register_cocos2dx_FlipY(tolua_S);
-	lua_register_cocos2dx_EventKeyboard(tolua_S);
-	lua_register_cocos2dx_TransitionSplitCols(tolua_S);
-	lua_register_cocos2dx_Timer(tolua_S);
-	lua_register_cocos2dx_RepeatForever(tolua_S);
-	lua_register_cocos2dx_Place(tolua_S);
-	lua_register_cocos2dx_EventListenerAcceleration(tolua_S);
-	lua_register_cocos2dx_TiledGrid3D(tolua_S);
-	lua_register_cocos2dx_EaseBounceOut(tolua_S);
-	lua_register_cocos2dx_RenderTexture(tolua_S);
-	lua_register_cocos2dx_TintBy(tolua_S);
-	lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
-	lua_register_cocos2dx_ClippingNode(tolua_S);
-	lua_register_cocos2dx_ActionFloat(tolua_S);
-	lua_register_cocos2dx_ParticleFlower(tolua_S);
-	lua_register_cocos2dx_EaseCircleActionIn(tolua_S);
-	lua_register_cocos2dx_Image(tolua_S);
-	lua_register_cocos2dx_LayerMultiplex(tolua_S);
-	lua_register_cocos2dx_Blink(tolua_S);
-	lua_register_cocos2dx_JumpTo(tolua_S);
-	lua_register_cocos2dx_ParticleExplosion(tolua_S);
-	lua_register_cocos2dx_TransitionJumpZoom(tolua_S);
-	lua_register_cocos2dx_Pass(tolua_S);
-	lua_register_cocos2dx_Touch(tolua_S);
-	lua_register_cocos2dx_CardinalSplineBy(tolua_S);
-	lua_register_cocos2dx_CatmullRomBy(tolua_S);
-	lua_register_cocos2dx_NodeGrid(tolua_S);
-	lua_register_cocos2dx_TMXLayerInfo(tolua_S);
-	lua_register_cocos2dx_EaseSineIn(tolua_S);
-	lua_register_cocos2dx_EaseBounceIn(tolua_S);
-	lua_register_cocos2dx_Camera(tolua_S);
-	lua_register_cocos2dx_GLProgram(tolua_S);
-	lua_register_cocos2dx_ParticleGalaxy(tolua_S);
-	lua_register_cocos2dx_Twirl(tolua_S);
-	lua_register_cocos2dx_MenuItemLabel(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionIn(tolua_S);
-	lua_register_cocos2dx_LayerColor(tolua_S);
-	lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
-	lua_register_cocos2dx_LayerGradient(tolua_S);
-	lua_register_cocos2dx_EventListenerTouchAllAtOnce(tolua_S);
-	lua_register_cocos2dx_GLViewImpl(tolua_S);
-	lua_register_cocos2dx_ToggleVisibility(tolua_S);
-	lua_register_cocos2dx_Repeat(tolua_S);
-	lua_register_cocos2dx_TransitionFlipY(tolua_S);
-	lua_register_cocos2dx_TurnOffTiles(tolua_S);
-	lua_register_cocos2dx_TintTo(tolua_S);
-	lua_register_cocos2dx_EaseBackInOut(tolua_S);
-	lua_register_cocos2dx_TransitionFadeBL(tolua_S);
-	lua_register_cocos2dx_TargetedAction(tolua_S);
-	lua_register_cocos2dx_DrawNode(tolua_S);
-	lua_register_cocos2dx_TransitionTurnOffTiles(tolua_S);
-	lua_register_cocos2dx_RotateTo(tolua_S);
-	lua_register_cocos2dx_TransitionSplitRows(tolua_S);
-	lua_register_cocos2dx_Device(tolua_S);
-	lua_register_cocos2dx_TransitionProgressRadialCCW(tolua_S);
-	lua_register_cocos2dx_ScaleTo(tolua_S);
-	lua_register_cocos2dx_TransitionPageTurn(tolua_S);
-	lua_register_cocos2dx_Properties(tolua_S);
-	lua_register_cocos2dx_BezierBy(tolua_S);
-	lua_register_cocos2dx_BezierTo(tolua_S);
-	lua_register_cocos2dx_ParticleMeteor(tolua_S);
-	lua_register_cocos2dx_SpriteFrame(tolua_S);
-	lua_register_cocos2dx_Liquid(tolua_S);
-	lua_register_cocos2dx_UserDefault(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipX(tolua_S);
-	lua_register_cocos2dx_EventFocus(tolua_S);
-	lua_register_cocos2dx_TransitionFade(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionInOut(tolua_S);
-	lua_register_cocos2dx_SpriteFrameCache(tolua_S);
-	lua_register_cocos2dx_PointLight(tolua_S);
-	lua_register_cocos2dx_TransitionCrossFade(tolua_S);
-	lua_register_cocos2dx_Ripple3D(tolua_S);
-	lua_register_cocos2dx_Lens3D(tolua_S);
-	lua_register_cocos2dx_EventListenerFocus(tolua_S);
-	lua_register_cocos2dx_Spawn(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionInOut(tolua_S);
-	lua_register_cocos2dx_GLProgramState(tolua_S);
-	lua_register_cocos2dx_PageTurn3D(tolua_S);
-	lua_register_cocos2dx_PolygonInfo(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
-	lua_register_cocos2dx_Grid3D(tolua_S);
-	lua_register_cocos2dx_EventListenerController(tolua_S);
-	lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionInOut(tolua_S);
-	lua_register_cocos2dx_ParticleData(tolua_S);
-	lua_register_cocos2dx_EaseBackIn(tolua_S);
-	lua_register_cocos2dx_SplitRows(tolua_S);
-	lua_register_cocos2dx_Follow(tolua_S);
-	lua_register_cocos2dx_Animate(tolua_S);
-	lua_register_cocos2dx_ShuffleTiles(tolua_S);
-	lua_register_cocos2dx_CameraBackgroundSkyBoxBrush(tolua_S);
-	lua_register_cocos2dx_ProgressTimer(tolua_S);
-	lua_register_cocos2dx_EaseQuarticActionIn(tolua_S);
-	lua_register_cocos2dx_Menu(tolua_S);
-	lua_register_cocos2dx_EaseInOut(tolua_S);
-	lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
-	lua_register_cocos2dx_ScaleBy(tolua_S);
-	lua_register_cocos2dx_EventTouch(tolua_S);
-	lua_register_cocos2dx_Animation(tolua_S);
-	lua_register_cocos2dx_TMXMapInfo(tolua_S);
-	lua_register_cocos2dx_EaseExponentialIn(tolua_S);
-	lua_register_cocos2dx_ReuseGrid(tolua_S);
-	lua_register_cocos2dx_EaseQuinticActionOut(tolua_S);
-	lua_register_cocos2dx_EventDispatcher(tolua_S);
-	lua_register_cocos2dx_MenuItemAtlasFont(tolua_S);
-	lua_register_cocos2dx_ActionManager(tolua_S);
-	lua_register_cocos2dx_OrbitCamera(tolua_S);
-	lua_register_cocos2dx_ParallaxNode(tolua_S);
-	lua_register_cocos2dx_ClippingRectangleNode(tolua_S);
-	lua_register_cocos2dx_EventCustom(tolua_S);
-	lua_register_cocos2dx_ParticleBatchNode(tolua_S);
-	lua_register_cocos2dx_Component(tolua_S);
-	lua_register_cocos2dx_EaseCubicActionOut(tolua_S);
-	lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
-	lua_register_cocos2dx_ParticleRain(tolua_S);
-	lua_register_cocos2dx_Waves(tolua_S);
-	lua_register_cocos2dx_ComponentLua(tolua_S);
-	lua_register_cocos2dx_MotionStreak3D(tolua_S);
-	lua_register_cocos2dx_EaseOut(tolua_S);
-	lua_register_cocos2dx_MenuItemFont(tolua_S);
-	lua_register_cocos2dx_TransitionFadeUp(tolua_S);
-	lua_register_cocos2dx_LayerRadialGradient(tolua_S);
-	lua_register_cocos2dx_EaseSineOut(tolua_S);
-	lua_register_cocos2dx_JumpTiles3D(tolua_S);
-	lua_register_cocos2dx_MenuItemToggle(tolua_S);
-	lua_register_cocos2dx_RemoveSelf(tolua_S);
-	lua_register_cocos2dx_SplitCols(tolua_S);
-	lua_register_cocos2dx_ProtectedNode(tolua_S);
-	lua_register_cocos2dx_MotionStreak(tolua_S);
-	lua_register_cocos2dx_RotateBy(tolua_S);
-	lua_register_cocos2dx_FileUtils(tolua_S);
-	lua_register_cocos2dx_Sprite(tolua_S);
-	lua_register_cocos2dx_ProgressTo(tolua_S);
-	lua_register_cocos2dx_TransitionProgressOutIn(tolua_S);
-	lua_register_cocos2dx_AnimationFrame(tolua_S);
-	lua_register_cocos2dx_Sequence(tolua_S);
-	lua_register_cocos2dx_Shaky3D(tolua_S);
-	lua_register_cocos2dx_TransitionProgressRadialCW(tolua_S);
-	lua_register_cocos2dx_EaseBounceInOut(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInR(tolua_S);
-	lua_register_cocos2dx_AmbientLight(tolua_S);
-	lua_register_cocos2dx_GLProgramCache(tolua_S);
-	lua_register_cocos2dx_EaseQuadraticActionIn(tolua_S);
-	lua_register_cocos2dx_WavesTiles3D(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInB(tolua_S);
-	lua_register_cocos2dx_Speed(tolua_S);
-	lua_register_cocos2dx_ShatteredTiles3D(tolua_S);
+    lua_register_cocos2dx_Ref(tolua_S);
+    lua_register_cocos2dx_RenderState(tolua_S);
+    lua_register_cocos2dx_Material(tolua_S);
+    lua_register_cocos2dx_Console(tolua_S);
+    lua_register_cocos2dx_Node(tolua_S);
+    lua_register_cocos2dx_Scene(tolua_S);
+    lua_register_cocos2dx_TransitionScene(tolua_S);
+    lua_register_cocos2dx_TransitionEaseScene(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInL(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInB(tolua_S);
+    lua_register_cocos2dx_AtlasNode(tolua_S);
+    lua_register_cocos2dx_TileMapAtlas(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInT(tolua_S);
+    lua_register_cocos2dx_TMXTilesetInfo(tolua_S);
+    lua_register_cocos2dx_TransitionMoveInR(tolua_S);
+    lua_register_cocos2dx_Action(tolua_S);
+    lua_register_cocos2dx_FiniteTimeAction(tolua_S);
+    lua_register_cocos2dx_ActionInstant(tolua_S);
+    lua_register_cocos2dx_Hide(tolua_S);
+    lua_register_cocos2dx_ParticleSystem(tolua_S);
+    lua_register_cocos2dx_ParticleSystemQuad(tolua_S);
+    lua_register_cocos2dx_ParticleSpiral(tolua_S);
+    lua_register_cocos2dx_GridBase(tolua_S);
+    lua_register_cocos2dx_AnimationCache(tolua_S);
+    lua_register_cocos2dx_ActionInterval(tolua_S);
+    lua_register_cocos2dx_ActionCamera(tolua_S);
+    lua_register_cocos2dx_ProgressFromTo(tolua_S);
+    lua_register_cocos2dx_MoveBy(tolua_S);
+    lua_register_cocos2dx_MoveTo(tolua_S);
+    lua_register_cocos2dx_JumpBy(tolua_S);
+    lua_register_cocos2dx_EventListener(tolua_S);
+    lua_register_cocos2dx_EventListenerKeyboard(tolua_S);
+    lua_register_cocos2dx_EventListenerMouse(tolua_S);
+    lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
+    lua_register_cocos2dx_Event(tolua_S);
+    lua_register_cocos2dx_EventController(tolua_S);
+    lua_register_cocos2dx_Director(tolua_S);
+    lua_register_cocos2dx_Scheduler(tolua_S);
+    lua_register_cocos2dx_ActionEase(tolua_S);
+    lua_register_cocos2dx_EaseElastic(tolua_S);
+    lua_register_cocos2dx_EaseElasticOut(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionInOut(tolua_S);
+    lua_register_cocos2dx_EaseBackOut(tolua_S);
+    lua_register_cocos2dx_Texture2D(tolua_S);
+    lua_register_cocos2dx_TransitionSceneOriented(tolua_S);
+    lua_register_cocos2dx_TransitionFlipX(tolua_S);
+    lua_register_cocos2dx_CameraBackgroundBrush(tolua_S);
+    lua_register_cocos2dx_CameraBackgroundDepthBrush(tolua_S);
+    lua_register_cocos2dx_CameraBackgroundColorBrush(tolua_S);
+    lua_register_cocos2dx_GridAction(tolua_S);
+    lua_register_cocos2dx_TiledGrid3DAction(tolua_S);
+    lua_register_cocos2dx_FadeOutTRTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
+    lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
+    lua_register_cocos2dx_StopGrid(tolua_S);
+    lua_register_cocos2dx_Technique(tolua_S);
+    lua_register_cocos2dx_SkewTo(tolua_S);
+    lua_register_cocos2dx_SkewBy(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionOut(tolua_S);
+    lua_register_cocos2dx_TransitionProgress(tolua_S);
+    lua_register_cocos2dx_TransitionProgressVertical(tolua_S);
+    lua_register_cocos2dx_Layer(tolua_S);
+    lua_register_cocos2dx_TMXTiledMap(tolua_S);
+    lua_register_cocos2dx_Grid3DAction(tolua_S);
+    lua_register_cocos2dx_BaseLight(tolua_S);
+    lua_register_cocos2dx_SpotLight(tolua_S);
+    lua_register_cocos2dx_FadeTo(tolua_S);
+    lua_register_cocos2dx_FadeIn(tolua_S);
+    lua_register_cocos2dx_DirectionLight(tolua_S);
+    lua_register_cocos2dx_ShakyTiles3D(tolua_S);
+    lua_register_cocos2dx_EventListenerCustom(tolua_S);
+    lua_register_cocos2dx_FlipX3D(tolua_S);
+    lua_register_cocos2dx_FlipY3D(tolua_S);
+    lua_register_cocos2dx_EaseSineInOut(tolua_S);
+    lua_register_cocos2dx_TransitionFlipAngular(tolua_S);
+    lua_register_cocos2dx_EaseElasticInOut(tolua_S);
+    lua_register_cocos2dx_EaseBounce(tolua_S);
+    lua_register_cocos2dx_Show(tolua_S);
+    lua_register_cocos2dx_FadeOut(tolua_S);
+    lua_register_cocos2dx_CallFunc(tolua_S);
+    lua_register_cocos2dx_EventMouse(tolua_S);
+    lua_register_cocos2dx_GLView(tolua_S);
+    lua_register_cocos2dx_EaseBezierAction(tolua_S);
+    lua_register_cocos2dx_ParticleFireworks(tolua_S);
+    lua_register_cocos2dx_MenuItem(tolua_S);
+    lua_register_cocos2dx_MenuItemSprite(tolua_S);
+    lua_register_cocos2dx_MenuItemImage(tolua_S);
+    lua_register_cocos2dx_AutoPolygon(tolua_S);
+    lua_register_cocos2dx_ParticleSmoke(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipAngular(tolua_S);
+    lua_register_cocos2dx_EaseRateAction(tolua_S);
+    lua_register_cocos2dx_EaseIn(tolua_S);
+    lua_register_cocos2dx_EaseExponentialInOut(tolua_S);
+    lua_register_cocos2dx_CardinalSplineTo(tolua_S);
+    lua_register_cocos2dx_CatmullRomTo(tolua_S);
+    lua_register_cocos2dx_Waves3D(tolua_S);
+    lua_register_cocos2dx_EaseExponentialOut(tolua_S);
+    lua_register_cocos2dx_Label(tolua_S);
+    lua_register_cocos2dx_Application(tolua_S);
+    lua_register_cocos2dx_DelayTime(tolua_S);
+    lua_register_cocos2dx_LabelAtlas(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionOut(tolua_S);
+    lua_register_cocos2dx_SpriteBatchNode(tolua_S);
+    lua_register_cocos2dx_TMXLayer(tolua_S);
+    lua_register_cocos2dx_AsyncTaskPool(tolua_S);
+    lua_register_cocos2dx_ParticleSnow(tolua_S);
+    lua_register_cocos2dx_EaseElasticIn(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionInOut(tolua_S);
+    lua_register_cocos2dx_TransitionFadeTR(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionOut(tolua_S);
+    lua_register_cocos2dx_EventAcceleration(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionIn(tolua_S);
+    lua_register_cocos2dx_TextureCache(tolua_S);
+    lua_register_cocos2dx_ActionTween(tolua_S);
+    lua_register_cocos2dx_TransitionFadeDown(tolua_S);
+    lua_register_cocos2dx_ParticleSun(tolua_S);
+    lua_register_cocos2dx_TransitionProgressHorizontal(tolua_S);
+    lua_register_cocos2dx_TMXObjectGroup(tolua_S);
+    lua_register_cocos2dx_ParticleFire(tolua_S);
+    lua_register_cocos2dx_FlipX(tolua_S);
+    lua_register_cocos2dx_FlipY(tolua_S);
+    lua_register_cocos2dx_EventKeyboard(tolua_S);
+    lua_register_cocos2dx_TransitionSplitCols(tolua_S);
+    lua_register_cocos2dx_Timer(tolua_S);
+    lua_register_cocos2dx_RepeatForever(tolua_S);
+    lua_register_cocos2dx_Place(tolua_S);
+    lua_register_cocos2dx_EventListenerAcceleration(tolua_S);
+    lua_register_cocos2dx_TiledGrid3D(tolua_S);
+    lua_register_cocos2dx_EaseBounceOut(tolua_S);
+    lua_register_cocos2dx_RenderTexture(tolua_S);
+    lua_register_cocos2dx_TintBy(tolua_S);
+    lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
+    lua_register_cocos2dx_ClippingNode(tolua_S);
+    lua_register_cocos2dx_ActionFloat(tolua_S);
+    lua_register_cocos2dx_ParticleFlower(tolua_S);
+    lua_register_cocos2dx_EaseCircleActionIn(tolua_S);
+    lua_register_cocos2dx_Image(tolua_S);
+    lua_register_cocos2dx_LayerMultiplex(tolua_S);
+    lua_register_cocos2dx_Blink(tolua_S);
+    lua_register_cocos2dx_JumpTo(tolua_S);
+    lua_register_cocos2dx_ParticleExplosion(tolua_S);
+    lua_register_cocos2dx_TransitionJumpZoom(tolua_S);
+    lua_register_cocos2dx_Pass(tolua_S);
+    lua_register_cocos2dx_Touch(tolua_S);
+    lua_register_cocos2dx_CardinalSplineBy(tolua_S);
+    lua_register_cocos2dx_CatmullRomBy(tolua_S);
+    lua_register_cocos2dx_NodeGrid(tolua_S);
+    lua_register_cocos2dx_TMXLayerInfo(tolua_S);
+    lua_register_cocos2dx_EaseSineIn(tolua_S);
+    lua_register_cocos2dx_EaseBounceIn(tolua_S);
+    lua_register_cocos2dx_Camera(tolua_S);
+    lua_register_cocos2dx_GLProgram(tolua_S);
+    lua_register_cocos2dx_ParticleGalaxy(tolua_S);
+    lua_register_cocos2dx_Twirl(tolua_S);
+    lua_register_cocos2dx_MenuItemLabel(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionIn(tolua_S);
+    lua_register_cocos2dx_LayerColor(tolua_S);
+    lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
+    lua_register_cocos2dx_LayerGradient(tolua_S);
+    lua_register_cocos2dx_EventListenerTouchAllAtOnce(tolua_S);
+    lua_register_cocos2dx_GLViewImpl(tolua_S);
+    lua_register_cocos2dx_ToggleVisibility(tolua_S);
+    lua_register_cocos2dx_Repeat(tolua_S);
+    lua_register_cocos2dx_TransitionFlipY(tolua_S);
+    lua_register_cocos2dx_TurnOffTiles(tolua_S);
+    lua_register_cocos2dx_TintTo(tolua_S);
+    lua_register_cocos2dx_EaseBackInOut(tolua_S);
+    lua_register_cocos2dx_TransitionFadeBL(tolua_S);
+    lua_register_cocos2dx_TargetedAction(tolua_S);
+    lua_register_cocos2dx_DrawNode(tolua_S);
+    lua_register_cocos2dx_TransitionTurnOffTiles(tolua_S);
+    lua_register_cocos2dx_RotateTo(tolua_S);
+    lua_register_cocos2dx_TransitionSplitRows(tolua_S);
+    lua_register_cocos2dx_Device(tolua_S);
+    lua_register_cocos2dx_TransitionProgressRadialCCW(tolua_S);
+    lua_register_cocos2dx_ScaleTo(tolua_S);
+    lua_register_cocos2dx_TransitionPageTurn(tolua_S);
+    lua_register_cocos2dx_Properties(tolua_S);
+    lua_register_cocos2dx_BezierBy(tolua_S);
+    lua_register_cocos2dx_BezierTo(tolua_S);
+    lua_register_cocos2dx_ParticleMeteor(tolua_S);
+    lua_register_cocos2dx_SpriteFrame(tolua_S);
+    lua_register_cocos2dx_Liquid(tolua_S);
+    lua_register_cocos2dx_UserDefault(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipX(tolua_S);
+    lua_register_cocos2dx_EventFocus(tolua_S);
+    lua_register_cocos2dx_TransitionFade(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionInOut(tolua_S);
+    lua_register_cocos2dx_SpriteFrameCache(tolua_S);
+    lua_register_cocos2dx_PointLight(tolua_S);
+    lua_register_cocos2dx_TransitionCrossFade(tolua_S);
+    lua_register_cocos2dx_Ripple3D(tolua_S);
+    lua_register_cocos2dx_Lens3D(tolua_S);
+    lua_register_cocos2dx_EventListenerFocus(tolua_S);
+    lua_register_cocos2dx_Spawn(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionInOut(tolua_S);
+    lua_register_cocos2dx_GLProgramState(tolua_S);
+    lua_register_cocos2dx_PageTurn3D(tolua_S);
+    lua_register_cocos2dx_PolygonInfo(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInL(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInT(tolua_S);
+    lua_register_cocos2dx_Grid3D(tolua_S);
+    lua_register_cocos2dx_EventListenerController(tolua_S);
+    lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionInOut(tolua_S);
+    lua_register_cocos2dx_ParticleData(tolua_S);
+    lua_register_cocos2dx_EaseBackIn(tolua_S);
+    lua_register_cocos2dx_SplitRows(tolua_S);
+    lua_register_cocos2dx_Follow(tolua_S);
+    lua_register_cocos2dx_Animate(tolua_S);
+    lua_register_cocos2dx_ShuffleTiles(tolua_S);
+    lua_register_cocos2dx_CameraBackgroundSkyBoxBrush(tolua_S);
+    lua_register_cocos2dx_ProgressTimer(tolua_S);
+    lua_register_cocos2dx_EaseQuarticActionIn(tolua_S);
+    lua_register_cocos2dx_Menu(tolua_S);
+    lua_register_cocos2dx_EaseInOut(tolua_S);
+    lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
+    lua_register_cocos2dx_ScaleBy(tolua_S);
+    lua_register_cocos2dx_EventTouch(tolua_S);
+    lua_register_cocos2dx_Animation(tolua_S);
+    lua_register_cocos2dx_TMXMapInfo(tolua_S);
+    lua_register_cocos2dx_EaseExponentialIn(tolua_S);
+    lua_register_cocos2dx_ReuseGrid(tolua_S);
+    lua_register_cocos2dx_EaseQuinticActionOut(tolua_S);
+    lua_register_cocos2dx_EventDispatcher(tolua_S);
+    lua_register_cocos2dx_MenuItemAtlasFont(tolua_S);
+    lua_register_cocos2dx_ActionManager(tolua_S);
+    lua_register_cocos2dx_OrbitCamera(tolua_S);
+    lua_register_cocos2dx_ParallaxNode(tolua_S);
+    lua_register_cocos2dx_ClippingRectangleNode(tolua_S);
+    lua_register_cocos2dx_EventCustom(tolua_S);
+    lua_register_cocos2dx_ParticleBatchNode(tolua_S);
+    lua_register_cocos2dx_Component(tolua_S);
+    lua_register_cocos2dx_EaseCubicActionOut(tolua_S);
+    lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
+    lua_register_cocos2dx_ParticleRain(tolua_S);
+    lua_register_cocos2dx_Waves(tolua_S);
+    lua_register_cocos2dx_ComponentLua(tolua_S);
+    lua_register_cocos2dx_MotionStreak3D(tolua_S);
+    lua_register_cocos2dx_EaseOut(tolua_S);
+    lua_register_cocos2dx_MenuItemFont(tolua_S);
+    lua_register_cocos2dx_TransitionFadeUp(tolua_S);
+    lua_register_cocos2dx_LayerRadialGradient(tolua_S);
+    lua_register_cocos2dx_EaseSineOut(tolua_S);
+    lua_register_cocos2dx_JumpTiles3D(tolua_S);
+    lua_register_cocos2dx_MenuItemToggle(tolua_S);
+    lua_register_cocos2dx_RemoveSelf(tolua_S);
+    lua_register_cocos2dx_SplitCols(tolua_S);
+    lua_register_cocos2dx_ProtectedNode(tolua_S);
+    lua_register_cocos2dx_MotionStreak(tolua_S);
+    lua_register_cocos2dx_RotateBy(tolua_S);
+    lua_register_cocos2dx_FileUtils(tolua_S);
+    lua_register_cocos2dx_Sprite(tolua_S);
+    lua_register_cocos2dx_ProgressTo(tolua_S);
+    lua_register_cocos2dx_TransitionProgressOutIn(tolua_S);
+    lua_register_cocos2dx_AnimationFrame(tolua_S);
+    lua_register_cocos2dx_Sequence(tolua_S);
+    lua_register_cocos2dx_Shaky3D(tolua_S);
+    lua_register_cocos2dx_TransitionProgressRadialCW(tolua_S);
+    lua_register_cocos2dx_EaseBounceInOut(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInR(tolua_S);
+    lua_register_cocos2dx_AmbientLight(tolua_S);
+    lua_register_cocos2dx_GLProgramCache(tolua_S);
+    lua_register_cocos2dx_EaseQuadraticActionIn(tolua_S);
+    lua_register_cocos2dx_WavesTiles3D(tolua_S);
+    lua_register_cocos2dx_TransitionSlideInB(tolua_S);
+    lua_register_cocos2dx_Speed(tolua_S);
+    lua_register_cocos2dx_ShatteredTiles3D(tolua_S);
 
-	tolua_endmodule(tolua_S);
-	return 1;
+    tolua_endmodule(tolua_S);
+    return 1;
 }
 

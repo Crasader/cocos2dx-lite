@@ -128,7 +128,7 @@ public class Cocos2dxHelper {
                 // use reflection to remove dependence of API 17 when compiling
 
                 // AudioManager.getProperty(AudioManager.PROPERTY_OUTPUT_SAMPLE_RATE);
-                final Class audioManagerClass = AudioManager.class;
+                final Class<AudioManager> audioManagerClass = AudioManager.class;
                 Object[] parameters = new Object[]{Cocos2dxReflectionHelper.<String>getConstantValue(audioManagerClass, "PROPERTY_OUTPUT_SAMPLE_RATE")};
                 final String strSampleRate = Cocos2dxReflectionHelper.<String>invokeInstanceMethod(am, "getProperty", new Class[]{String.class}, parameters);
 
@@ -171,8 +171,7 @@ public class Cocos2dxHelper {
             //Enhance API modification begin
             Intent serviceIntent = new Intent(IGameTuningService.class.getName());
             serviceIntent.setPackage("com.enhance.gameservice");
-            boolean suc = activity.getApplicationContext().bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE);
-            //Enhance API modification end
+            activity.getApplicationContext().bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE);
             
             int versionCode = 1;
             try {
@@ -196,7 +195,7 @@ public class Cocos2dxHelper {
 
             String pathToOBB = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/obb/" + Cocos2dxHelper.sPackageName;
 
-	    	// Listing all files inside the folder (pathToOBB) where OBB files are expected to be found.
+            // Listing all files inside the folder (pathToOBB) where OBB files are expected to be found.
             String[] fileNames = new File(pathToOBB).list(new FilenameFilter() { // Using filter to pick up only main OBB file name.
                 public boolean accept(File dir, String name) {
                     return name.startsWith("main.") && name.endsWith(".obb");  // It's possible to filter only by extension here to get path to patch OBB file also.
@@ -317,14 +316,14 @@ public class Cocos2dxHelper {
         sVibrateService.vibrate((long)(duration * 1000));
     }
 
- 	public static String getVersion() {
- 		try {
- 			String version = Cocos2dxActivity.getContext().getPackageManager().getPackageInfo(Cocos2dxActivity.getContext().getPackageName(), 0).versionName;
- 			return version;
- 		} catch(Exception e) {
- 			return "";
- 		}
- 	}
+    public static String getVersion() {
+        try {
+            String version = Cocos2dxActivity.getContext().getPackageManager().getPackageInfo(Cocos2dxActivity.getContext().getPackageName(), 0).versionName;
+            return version;
+        } catch(Exception e) {
+            return "";
+        }
+    }
 
     public static boolean openURL(String url) { 
         boolean ret = false;

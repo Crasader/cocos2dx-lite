@@ -57,6 +57,8 @@ public:
     
     /**Get the shared GLProgramState by the owner GLProgram.*/
     GLProgramState* getGLProgramState(GLProgram* program);
+
+	void removeGLProgramState(GLProgram* program);
     /**Remove all the cached GLProgramState.*/
 	void removeAllGLProgramState();
     /**Remove unused GLProgramState.*/

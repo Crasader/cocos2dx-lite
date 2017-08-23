@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCSprite3DMaterial.h"
 #include "3d/CCMesh.h"
 #include "platform/CCFileUtils.h"
@@ -331,3 +331,4 @@ void Sprite3DMaterialCache::removeUnusedSprite3DMaterial()
 }
 
 NS_CC_END
+#endif

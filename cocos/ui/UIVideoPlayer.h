@@ -129,6 +129,9 @@ namespace experimental{
              */
             virtual bool isPlaying() const;
 
+            virtual void setSkipEnable(bool bSkip);
+
+            virtual bool isSkipEnable() const;
             /**
              * Causes the video player to keep aspect ratio or no when displaying the video.
              *
@@ -193,7 +196,7 @@ namespace experimental{
                 FILENAME = 0,
                 URL
             };
-
+            bool _bSkipEnable;
             bool _isPlaying;
             bool _fullScreenDirty;
             bool _fullScreenEnabled;

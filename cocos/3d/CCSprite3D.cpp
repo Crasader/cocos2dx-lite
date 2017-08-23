@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCSprite3D.h"
 #include "3d/CCObjLoader.h"
 #include "3d/CCMeshSkin.h"
@@ -1038,3 +1038,4 @@ static Sprite3DMaterial* getSprite3DMaterialForAttribs(MeshVertexData* meshVerte
 }
 
 NS_CC_END
+#endif

@@ -108,8 +108,8 @@ Node::Node()
 , _realOpacity(255)
 , _displayedColor(Color3B::WHITE)
 , _realColor(Color3B::WHITE)
-, _cascadeColorEnabled(false)
-, _cascadeOpacityEnabled(false)
+, _cascadeColorEnabled(true)
+, _cascadeOpacityEnabled(true)
 , _cameraMask(1)
 #if CC_USE_PHYSICS
 , _physicsBody(nullptr)
@@ -728,7 +728,11 @@ void Node::setGLProgramState(cocos2d::GLProgramState* glProgramState)
 {
     if (glProgramState != _glProgramState)
     {
-        CC_SAFE_RELEASE(_glProgramState);
+        //CC_SAFE_RELEASE(_glProgramState);
+		if (_glProgramState != nullptr)
+		{
+			_glProgramState->releaseFromCache();
+		}
         _glProgramState = glProgramState;
         CC_SAFE_RETAIN(_glProgramState);
 
@@ -989,17 +993,17 @@ void Node::addChildHelper(Node* child, int localZOrder, int tag, const std::stri
         }
     }
     
-    if (_cascadeColorEnabled)
-    {
-        updateCascadeColor();
+    //if (_cascadeColorEnabled)
+    //{
+    //    updateCascadeColor();
+    //}
+    //
+    //if (_cascadeOpacityEnabled)
+    //{
+    //    updateCascadeOpacity();
+    //}
     }
     
-    if (_cascadeOpacityEnabled)
-    {
-        updateCascadeOpacity();
-    }
-}
-
 void Node::addChild(Node *child, int zOrder)
 {
     CCASSERT( child != nullptr, "Argument must be non-nil");
@@ -1310,6 +1314,16 @@ void Node::onEnter()
             return;
     }
 #endif
+    
+	if (_cascadeColorEnabled)
+	{
+	    updateCascadeColor();
+	}
+
+	if (_cascadeOpacityEnabled)
+	{
+	    updateCascadeOpacity();
+	}
     
     if (_onEnterCallback)
         _onEnterCallback();

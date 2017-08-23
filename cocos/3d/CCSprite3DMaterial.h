@@ -24,7 +24,7 @@
 
 #ifndef __CCSPRIT3DMATERIAL_H__
 #define __CCSPRIT3DMATERIAL_H__
-
+#if CC_USE_3D_MODULE
 #include <string>
 #include <unordered_map>
 #include "base/ccTypes.h"
@@ -170,5 +170,5 @@ protected:
 /// @}
 
 NS_CC_END
-
+#endif
 #endif // __CCSPRIT3DMATERIAL_H__

@@ -24,7 +24,7 @@
 
 #ifndef __cocos2d_libs__Sprite3DReader__
 #define __cocos2d_libs__Sprite3DReader__
-
+#if CC_USE_3D_MODULE
 #include "math/Vec2.h"
 #include "editor-support/cocostudio/CocosStudioExport.h"
 #include "editor-support/cocostudio/WidgetReader/NodeReaderProtocol.h"
@@ -60,5 +60,5 @@ namespace cocostudio
         cocos2d::Vec2 getVec2Attribute(const tinyxml2::XMLAttribute* attribute) const;
     };
 }
-
+#endif
 #endif /* defined(__cocos2d_libs__Sprite3DReader__) */

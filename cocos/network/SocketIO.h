@@ -59,6 +59,8 @@ in the onClose method the pointer should be set to NULL or used to connect to a 
 #ifndef __CC_SOCKETIO_H__
 #define __CC_SOCKETIO_H__
 
+#if CC_SOCKET_IO
+
 #include <string>
 #include <unordered_map>
 #include "platform/CCPlatformMacros.h"
@@ -293,5 +295,6 @@ NS_CC_END
 // end group
 /// @}
 
+#endif //CC_SOCKET_IO
 #endif /* defined(__CC_JSB_SOCKETIO_H__) */
 

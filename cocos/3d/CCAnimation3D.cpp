@@ -21,7 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+#if CC_USE_3D_MODULE
 #include "3d/CCAnimation3D.h"
 #include "3d/CCBundle3D.h"
 #include "platform/CCFileUtils.h"
@@ -249,3 +249,4 @@ Animation3DCache::~Animation3DCache()
 }
 
 NS_CC_END
+#endif

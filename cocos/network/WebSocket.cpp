@@ -26,6 +26,7 @@
 (http://libwebsockets.org)"
 
  ****************************************************************************/
+#if CC_WEB_SOCKET
 
 #include "network/WebSocket.h"
 #include "network/Uri.h"
@@ -1327,3 +1328,5 @@ int WebSocket::onSocketCallback(struct lws *wsi,
 }
 
 NS_NETWORK_END
+
+#endif //CC_WEB_SOCKET
